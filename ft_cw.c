@@ -1,4 +1,5 @@
 #include "fdf.h"
+
 int			ft_count_w(char  *s, char c)
 {
 	int i;
