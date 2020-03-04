@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 16:11:21 by ddratini          #+#    #+#             */
-/*   Updated: 2020/03/04 21:20:06 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/04 22:03:31 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int			get_high(t_fdf *data, char *fname)
 
 	fd = open(fname, O_RDONLY);
 	h = 0;
-	while (get_next_line(fd, &line))
+	while (get_next_line(fd, &line) > 0)
 	{
 		h++;
 		free(line);
@@ -36,6 +36,8 @@ int         get_width(char *fname)//t_fdf *data, )
 	char	*line;
 
 	fd = open(fname, O_RDONLY);
+	if (fd < 0)
+		return(ft_err());
 	get_next_line(fd, &line);
 	w = ft_count_w(line, ' ');//ft_strsplit(line, ' ');//ft_wdcounter(line, ' ');
 	free(line);
@@ -52,7 +54,7 @@ void		fill_matrix(int *z_line, char *line)//t_fdf *data, char *line)
 	while (nums[i])
 	{
 		z_line[i] = ft_atoi(nums[i]);
-//		printf("zline[i]=%4d | i=%d\n", z_line[i], i);
+		printf("zline[i]=%4d | i=%d line=%s\n", z_line[i], i, line);
 		free(nums[i]);
 		++i;
 	}
@@ -73,7 +75,7 @@ void		read_file(t_fdf *fdf, char *fname)
 		fdf->z_matrix[i++] = (int *)malloc(sizeof(int) * (fdf->w + 1));
 	fd = open(fname, O_RDONLY);
 	i = 0;
-	while (get_next_line(fd, &line))
+	while (get_next_line(fd, &line) > 0)
 	{
 		fill_matrix(fdf->z_matrix[i], line);
 		free(line);
@@ -289,7 +291,7 @@ int			data_init(t_fdf *fdf)
 	fdf->rot_y = 0;
 	fdf->rot_z = 0;
 	fdf->projection = PRL;// 1;
-	fdf->zoom = 3;
+	fdf->zoom = 10;
 	fdf->shift_x = 50;
 	fdf->shift_y = 50;
 	return (0);
