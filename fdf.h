@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 16:10:34 by ddratini          #+#    #+#             */
-/*   Updated: 2020/03/04 18:58:45 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/04 21:11:11 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,14 @@
 # include <math.h>
 # define WHITE 0xffffff
 # define RED 0xe80c0c
+# define WIN_W_X 500//2000
+# define WIN_H_Y 600//1300
 # define ISO_ANG 0.523599
 # define PRL 1
 # define ISO 3
 # define ESC 53
+
+# define ANGLE 0
 # define Y_DOWN 126
 # define Y_UP 125
 # define X_DOWN 123
