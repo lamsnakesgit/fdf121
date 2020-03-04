@@ -5,10 +5,6 @@ set(CMAKE_C_STANDARD 11)
 
 include_directories(.)
 include_directories(libft)
-#include_directories(minilibx)
-include_directories(minilibx_macos)
-#include_directories(minilibx_mms_20191025_beta)
-
 
 add_executable(fdf
         libft/bonus.c
@@ -106,58 +102,12 @@ add_executable(fdf
         libft/tip_s_c.c
         libft/tip_u.c
         libft/tip_x.c
-        minilibx_macos/libmlx.a
-
-#        minilibx/test/main.c
-#        minilibx/test/new_win.c
-#        minilibx/mlx.h
-#        minilibx/mlx_clear_window.c
-#        minilibx/mlx_destroy_image.c
-#        minilibx/mlx_destroy_window.c
-#        minilibx/mlx_expose_hook.c
-#        minilibx/mlx_flush_event.c
-#        minilibx/mlx_get_color_value.c
-#        minilibx/mlx_get_data_addr.c
-#        minilibx/mlx_hook.c
-#        minilibx/mlx_init.c
-#        minilibx/mlx_int.h
-#        minilibx/mlx_int_anti_resize_win.c
-#        minilibx/mlx_int_do_nothing.c
-#        minilibx/mlx_int_get_visual.c
-#        minilibx/mlx_int_param_event.c
-#        minilibx/mlx_int_set_win_event_mask.c
-#        minilibx/mlx_int_str_to_wordtab.c
-#        minilibx/mlx_int_wait_first_expose.c
-#        minilibx/mlx_key_hook.c
-#        minilibx/mlx_lib_xpm.c
-#        minilibx/mlx_loop.c
-#        minilibx/mlx_loop_hook.c
-#        minilibx/mlx_mouse_hook.c
-#        minilibx/mlx_new_image.c
-#        minilibx/mlx_new_window.c
-#        minilibx/mlx_pixel_put.c
-#        minilibx/mlx_put_image_to_window.c
-#        minilibx/mlx_rgb.c
-#        minilibx/mlx_string_put.c
-#        minilibx/mlx_xpm.c
-#        minilibx_macos/font.c
-#        minilibx_macos/mlx.h
-#        minilibx_macos/mlx_init_loop.m
-#        minilibx_macos/mlx_int.h
-#        minilibx_macos/mlx_int_str_to_wordtab.c
-#        minilibx_macos/mlx_new_image.m
-#        minilibx_macos/mlx_new_window.h
-#        minilibx_macos/mlx_new_window.m
-#        minilibx_macos/mlx_rgb.c
-#        minilibx_macos/mlx_shaders.c
-#        minilibx_macos/mlx_xpm.c
-#        minilibx_mms_20191025_beta/font.c
-#        minilibx_mms_20191025_beta/mlx.h
-#        minilibx_mms_20191025_beta/mlx_png.c
-#        minilibx_mms_20191025_beta/mlx_rgb.c
-#        minilibx_mms_20191025_beta/mlx_string_put.c
-#        minilibx_mms_20191025_beta/mlx_xpm.c
         fdf.c
         fdf.h
-        ft_cw.c
-        main.c)
+        ft_cw.c)
+
+target_link_libraries(fdf
+        "-lmlx"
+        "-framework OpenGL"
+        "-framework AppKit"
+        )
