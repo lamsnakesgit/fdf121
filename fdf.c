@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 16:11:21 by ddratini          #+#    #+#             */
-/*   Updated: 2020/03/02 22:25:53 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/04 19:00:07 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,6 @@ void		read_file(t_fdf *fdf, char *fname)
 		printf("\nPPPP");
 	}
 }
-# define UP_Z 4
-# define UP_Y 44
-# define UP_X 444
-# define DOWN_Z 4444
-# define DOWN_Y 44444
-# define DOWN_X 4444444
 
 int			deal_key(int key, t_fdf *fdf)//void *data)
 {
@@ -138,6 +132,10 @@ int			deal_key(int key, t_fdf *fdf)//void *data)
 		fdf->rot_y += 10;
 	else if (key == DOWN_Y)
 		fdf->rot_y -= 10;
+	else if (key == 12)//q w12 13)
+		fdf->zoom *= -10;
+	else if (key == 13)
+		fdf->zoom *= 10;
 	else
 	{
 		printf("NOKEY|");
@@ -189,15 +187,17 @@ void		findpb(float x, float y, float x1, float y1, t_fdf *fdf)
 //	z *= fdf->zoom; z1 *= fdf->zoom;//
 	//=========color==============
 	fdf->color = (z || z1) ? RED : WHITE;
-	//==========3D==========
-	isometric(&x, &y, z);
-	isometric(&x1, &y1, z1);
-	//3d iso
+	//==========3D==========ISO
+	if (fdf->projection == ISO)
+	{
+		isometric(&x, &y, z);
+		isometric(&x1, &y1, z1);
+	}
 	//			SHIFT==========
 	x += fdf->shift_x; //150;
 	y += fdf->shift_y;//150;
-	x1+= fdf->shift_x;//150;//05;
-	y1+= fdf->shift_y;//150;
+	x1 += fdf->shift_x;//150;//05;
+	y1 += fdf->shift_y;//150;
 	z += fdf->z_sh;//SHIFT Z ZOOM
 	x_st = x1 - x;
 	y_st = y1 - y;
@@ -210,17 +210,17 @@ void		findpb(float x, float y, float x1, float y1, t_fdf *fdf)
 	y_st /= max;
 	int i;
 	i = 0;
-//	printf("x_st=%f y_st=%f x=%f y=%f fdcolor=%d\n", x_st, y_st, x, y, fdf->color);
+	printf("x_st=%f y_st=%f x=%f y=%f fdcolor=%d\n", x_st, y_st, x, y, fdf->color);
 	while ((int)(x - x1)  || (int)(y - y1)  )//? lol no>0 ||//////bresenham
 	{
 	//	i = (int)(fdf->w * (int)y + (int)x);
 	//	if (i == fdf->w)
 	//		break;
 	//	printf("i=%d fdfimgi=%d\n", i, fdf->color);//fdf->img[0]);
-		fdf->img[i] = fdf->color;
-		if (i - 1 >= 0)
+//		fdf->img[i] = fdf->color;
+//		if (i - 1 >= 0)
 	//		printf("WHYimgi=%d\n", fdf->img[i-1]);
-		++i;
+//		++i;
 		mlx_pixel_put(fdf->mlx_ptr, fdf->win_ptr, x, y, fdf->color);//0xffffff);
 	//	printf("MPPUT=%d y=%d x-x1=%d y-y1=%d\n", x ,y, (int)(x-x1), (int)(y-y1));
 		x += x_st;
@@ -230,26 +230,28 @@ void		findpb(float x, float y, float x1, float y1, t_fdf *fdf)
 
 void		draw_line(t_fdf *fdf)
 {
+	t_coord	crd;
 	int x;
 	int y;
 
-	y = 0;
-	printf("fdf-h=%d fdf->w=%d ", fdf->h, fdf->w);
-	while (y < fdf->h )//-2 )
+	crd.y = 0;
+	printf("fdf-h=%d fdf->w=%d \n", fdf->h, fdf->w);
+	while (crd.y < fdf->h )//-2 )
 	{
-		x = 0;
-	//	printf("ASDF=y=%d x=%d y+1 x + 1\n", y, x);
-		while (x < fdf->w )//-2 )
+		crd.x = 0;
+		printf("ASDF=y=%f x=%f y+1 x + 1\n", crd.y, crd.x);
+		while (crd.x < fdf->w )//-2 )
 		{
-			if (x < fdf->w - 1)
-				findpb(x, y, x + 1, y, fdf);
-			if (y < fdf->h - 1)
-				findpb(x, y, x, y + 1, fdf);
-			++x;
+			if (crd.x < fdf->w - 1)
+				findpb(crd.x, crd.y, crd.x + 1, crd.y, fdf);
+			printf("WER=%f crdy=%f\n", crd.x, crd.y);
+			if (crd.y < fdf->h - 1)
+				findpb(crd.x, crd.y, crd.x, crd.y + 1, fdf);
+			++crd.x;
 		}
-		++y;
+		++crd.y;
 	}
-	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);//i guess put image?
+//	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);
 }
 
 int			mouse_press(int press, int x, int y, void *param)
@@ -257,7 +259,26 @@ int			mouse_press(int press, int x, int y, void *param)
 	printf("MOUSE=%d x=%d y=%d\n", press, x, y);
 	return (0);
 }
-
+int			data_init(t_fdf *fdf)
+{
+	fdf->mlx_ptr = mlx_init();
+	fdf->win_ptr = mlx_new_window(fdf->mlx_ptr, 2000, 1300, "OPENWIN");
+	fdf->bpp = 32;
+	fdf->color = 0;//SEG?
+	fdf->endian = 0;
+	fdf->img = NULL;
+//	fdf->img = (int *)malloc(sizeof(int) * fdf->w);
+//	fdf->img_ptr = mlx_new_image(fdf->mlx_ptr, 2000, 1300);
+//	fdf->img = (int *)	mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, &fdf->w, &fdf->endian);
+//	fdf->rot_x = 0;
+//	fdf->rot_y = 0;
+//	fdf->rot_z = 0;
+	fdf->projection = PRL;// 1;
+	fdf->zoom = 20;
+	fdf->shift_x = 50;
+	fdf->shift_y = 50;
+	return (0);
+}
 int			main(int ac, char **av)
 {
 	t_fdf *fdf;
@@ -268,28 +289,18 @@ int			main(int ac, char **av)
 	if (ac != 2)
 		ft_err();
 	read_file(fdf, av[1]);//(data, fname);
-///	fdf->zoom = 40;
-	fdf->zoom = 20;//500;
-	fdf->mlx_ptr = mlx_init();
-//	fdf->win_ptr = mlx_new_window(fdf->mlx_ptr, 999999, 99999, "TR");
-	fdf->win_ptr = mlx_new_window(fdf->mlx_ptr, 2000, 1300, "OPENW");//9999, 9999, "TR");
-	fdf->img_ptr = mlx_new_image(fdf->mlx_ptr, 2000, 1300);
-	fdf->bpp = 32;
-	fdf->end = 0;
-	printf("FDFcolor=%d ", fdf->color);
-	fdf->img = (int *)malloc(sizeof(int) * fdf->w);
-	fdf->img = (int *)mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, &fdf->w, &fdf->end);
+	data_init(fdf);
+	printf("FDFcolor=%d \n", fdf->color);
 //	while (i < fdf->w)
 //		printf("IMGI=%d ", fdf->img[i]);
 	draw_line(fdf);
 	mlx_hook(fdf->win_ptr, 2, 0, deal_key, fdf);//3
 //	mlx_hook(fdf->win_ptr, 17, 0, deal_key, fdf);
 //	mlx_key_hook(fdf->win_ptr, deal_key, fdf);//NULL);
-	mlx_loop(fdf->mlx_ptr);
 //	mlx_mouse_hook(fdf->win_ptr, mouse_press, fdf);
+	mlx_loop(fdf->mlx_ptr);
 //	mlx_loop(fdf->mlx_ptr);
 	//bresenham(10, 10, 600, 300, fdf);
-	//mlx_pixel_put(fdf->mlx_ptr, fdf->win_ptr, )
     return (0);
 }
 

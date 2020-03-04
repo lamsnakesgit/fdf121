@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 16:10:34 by ddratini          #+#    #+#             */
-/*   Updated: 2020/03/02 21:34:25 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/04 18:58:45 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,22 @@
 # include <math.h>
 # define WHITE 0xffffff
 # define RED 0xe80c0c
-# define ISO 0.523599
+# define ISO_ANG 0.523599
+# define PRL 1
+# define ISO 3
 # define ESC 53
 # define Y_DOWN 126
 # define Y_UP 125
 # define X_DOWN 123
 # define X_UP 124
+
+# define UP_Z 4
+# define UP_Y 44
+# define UP_X 444
+# define DOWN_Z 4444
+# define DOWN_Y 44444
+# define DOWN_X 4444444
+
 
 /*
 ** change the type of projection
@@ -63,7 +73,7 @@ typedef struct	s_fdf
 	void	*img_ptr;
 	int		*img;
 	int		bpp;
-	int		end;
+	int		endian;
 }				t_fdf;
 
 void	draw_line(t_fdf *fdf);
