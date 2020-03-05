@@ -85,6 +85,41 @@ int 		calc_high(t_fdf *fdf, char **map)
 	fdf->h = h;
 	return (h);
 }
+
+void 		free_z(t_fdf *fdf, int i)
+{
+	int c;
+
+	c = 0;
+	while(c < i)
+	{
+		free(fdf->z_matrix[c]);
+		++c;
+	}
+	free(fdf->z_matrix);
+}
+
+int 		calc_size(t_fdf *fdf)
+{
+	int i;
+
+	if (!get_high(fdf))
+		return (0);
+	if (!get_width(fdf))
+		return (0);
+	if (!(fdf->z_matrix = (int **)malloc(sizeof(int*) * (fdf->h + 1))))
+		return (0);
+	i = 0;
+	while (i <= fdf->h)
+	{
+		fdf->z_matrix[i] = (int *)malloc(sizeof(int) * (fdf->w + 1));
+		if (!fdf->z_matrix[i])
+			free_z(fdf, i);
+		++i;
+	}
+	return (1);
+}
+
 int			read_file(t_fdf *fdf)
 {
 	int		fd;
@@ -92,14 +127,8 @@ int			read_file(t_fdf *fdf)
 	int		i;
 	char 	**map;
 
-	if (!get_high(fdf))
-		return (0);
-	if (!get_width(fdf))
-		return (0);
-	fdf->z_matrix = (int **)malloc(sizeof(int*) * (fdf->h + 1));
-	i = 0;
-	while (i <= fdf->h)
-		fdf->z_matrix[i++] = (int *)malloc(sizeof(int) * (fdf->w + 1));
+	if (!calc_size(fdf))
+		return(0);
 	fd = open(fdf->fname, O_RDONLY);
 	i = 0;
 	if (!(map = processmap(fd)))
