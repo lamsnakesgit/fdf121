@@ -27,35 +27,35 @@ int			deal_key(int key, t_fdf *fdf)
 	}
 	if (key == 126)
 		fdf->shift_y -= 10;
-	else if (key == 125)
+	if (key == 125)
 		fdf->shift_y += 10;
-	else if (key == 123)
+	if (key == 123)
 		fdf->shift_x -= 10;
-	else if (key == 124)
+	if (key == 124)
 		fdf->shift_x += 10;
-	else if (key == 6)//z
+	if (key == 6)//z
 		fdf->projection = 1;
-	else if (key == 7)//x
+	if (key == 7)//x
 		fdf->projection = 3;
-	else if (key == 0)//8) A-0
+	if (key == 0)//8) A-0
 		fdf->z_sh += 10;
-	else if (key == 1)//S-1
+	if (key == 1)//S-1
 		fdf->z_sh -= 10;
-	else if (key == UP_Z)
+	if (key == UP_Z)
 		fdf->rot_z += 10;
-	else if (key == DOWN_Z)
+	if (key == DOWN_Z)
 		fdf->rot_z -= 10;
-	else if (key == UP_X)
+	if (key == UP_X)
 		fdf->rot_x += 10;
-	else if (key == DOWN_X)
+	if (key == DOWN_X)
 		fdf->rot_x -= 10;
-	else if (key == UP_Y)
+	if (key == UP_Y)
 		fdf->rot_y += 10;
-	else if (key == DOWN_Y)
+	if (key == DOWN_Y)
 		fdf->rot_y -= 10;
-	else if (key == 12)//q w12 13)
+	if (key == 12)//q w12 13)
 		fdf->zoom += 1;//-10;
-	else if (key == 13)
+	if (key == 13)
 		fdf->zoom -= 1;
 //	else
 //	{

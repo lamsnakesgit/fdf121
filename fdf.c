@@ -18,7 +18,7 @@ int			get_high(t_fdf *fdf)
 	int		fd;
 	int		h;
 
-	close(fd);
+//	close(fd);//INTI??
 	fd = open(fdf->fname, O_RDONLY);
 	if (fd < 0)
 		return (0);
@@ -173,14 +173,25 @@ int			read_file(t_fdf *fdf)
 int			data_init(t_fdf *fdf)
 {
 	fdf->mlx_ptr = mlx_init();
-	fdf->win_ptr = mlx_new_window(fdf->mlx_ptr, WIN_W_X, WIN_H_Y, "ГОРИ В АДУ");//"OPENWIN");
+	fdf->win_ptr = mlx_new_window(fdf->mlx_ptr, WIN_W_X, WIN_W_X, "ГОРИ В АДУ");//"OPENWIN");
 	fdf->bpp = 32;
 	fdf->color = 0;//SEG?
 	fdf->endian = 0;
 	fdf->img = NULL;
-//	fdf->img = (int )malloc(sizeof(int) * fdf->w);
+	fdf->img = (int *)malloc(sizeof(int) * fdf->w);
 //	fdf->img_ptr = mlx_new_image(fdf->mlx_ptr, 2000, 1300);
 //	fdf->img = (int *)	mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, &fdf->w, &fdf->endian);
+	int i = 0;
+	printf("fdfingi=%d\n", fdf->img[0]);
+/*	while (i < fdf->w * fdf->h)
+	{
+		if (i > 2600950)
+			printf("i =%d \nimg[i]]%d\n", i, fdf->img[i]);
+		if (fdf->img[i])
+			printf("IMG%d\n", fdf->img[i]);
+		++i;//2600959
+	}*/
+//	return (0);
 	fdf->rot_x = 0;
 	fdf->rot_y = 0;
 	fdf->rot_z = 0;
@@ -218,7 +229,6 @@ int			main(int ac, char **av)
 	//bresenham(10, 10, 600, 300, fdf);
     return (0);
 }
-
 
 int		ft_err()
 {

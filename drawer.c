@@ -18,8 +18,7 @@ float		mod(float a)
 	return (a >= 0 ? a : -a);
 }
 
-
-void		findpb(t_coord crd, float x1, float y1, t_fdf *fdf)
+void		findpb(t_coord crd, int x1, int y1, t_fdf *fdf)
 {
 	float	x_st;
 	float	y_st;
@@ -67,30 +66,34 @@ void		findpb(t_coord crd, float x1, float y1, t_fdf *fdf)
 		max = mod(x_st);
 	else
 		max = mod(y_st);
-	max = mod(x_st) > mod(y_st) ? mod(x_st) : mod(y_st);
 	x_st /= max;
 	y_st /= max;
 	int i;
 	i = 0;
 //	printf("x_st=%f y_st=%f x=%f y=%f fdcolor=%d\n", x_st, y_st, x, y, fdf->color);
+//	printf("CLR=%d\n", CLR);//65280
 	while ((int)(crd.x - x1)  || (int)(crd.y - y1)  )//? lol no>0 ||//////bresenham
 	{
-		i = (int)(fdf->w * (int)crd.y + (int)crd.x);
-//		printf("i=%d \n", i);
+	//	i = (int)(fdf->w * (int)crd.y + (int)crd.x);
+	//	printf("i=%d fdf->color=%d\n", i, fdf->color);
 		//	if (i == fdf->w)
 		//		break;
 		//	printf("i=%d fdfimgi=%d\n", i, fdf->color);//fdf->img[0]);
-//		fdf->img[i] = fdf->color;
+	//	fdf->img[i] = fdf->color;
 //		if (i - 1 >= 0)
-		//		printf("WHYimgi=%d\n", fdf->img[i-1]);
+//				printf("WHYimgi=%d\n, fdf->color=%d\n", fdf->img[i-1], fdf->color);
 //		++i;
 		mlx_pixel_put(fdf->mlx_ptr, fdf->win_ptr, crd.x, crd.y, fdf->color);//0xffffff);
 		//	printf("MPPUT=%d y=%d x-x1=%d y-y1=%d\n", x ,y, (int)(x-x1), (int)(y-y1));
-		crd.x += x_st;
+		crd.x += 1;//x_st;
 		crd.y += y_st;
 	}
 }
-
+/*
+void 		brs(t_coord crd, int x1, int x2, t_fdf *fdf)
+{
+	;
+}*/
 void		draw_line(t_fdf *fdf)
 {
 	t_coord	crd;

@@ -22,8 +22,9 @@
 # define BS 16000
 # define WHITE 0xffffff
 # define RED 0xe80c0c
-# define WIN_W_X 500//2000
-# define WIN_H_Y 600//1300
+# define CLR 0x00FF00
+# define WIN_W_X 500//2000//must be equal?
+//# define WIN_H_Y 500;//600//1300
 # define ISO_ANG 0.523599
 # define PRL 1
 # define ISO 3
@@ -53,9 +54,14 @@
 
 typedef	struct	s_coord
 {
-	float	x;
-	float	y;
+	int	x;
+	int	y;
 	int		z;
+	int 	delta_x;
+	int		delta_y;
+	int 	x2;
+	int		y2;
+	int		z2;
 }				t_coord;
 
 typedef struct	s_fdf
@@ -89,7 +95,8 @@ int		deal_mouse(int m, t_fdf *fdf);
 int		mouse_press(int button, int x, int y, void *param);
 int		ft_err();
 
-void		isometric(float *x, float *y, int z);
+//void		isometric(float *x, float *y, int z);
+void		isometric(int *x, int *y, int z);
 void 		rot_y(float *x, float *y, float *z, float angle);
 void 		rot_z(float *x, float *y, float *z, float angle);
 
@@ -97,7 +104,9 @@ int			deal_mouse(int m, t_fdf *fdf);
 int			deal_key(int key, t_fdf *fdf);
 
 void		draw_line(t_fdf *fdf);
-void		findpb(t_coord crd, float x1, float y1, t_fdf *fdf);
+//void		findpb(t_coord crd, float x1, float y1, t_fdf *fdf);
+void		findpb(t_coord crd, int x1, int y1, t_fdf *fdf);
+
 float		mod(float a);
 
 int			mouse_press(int press, int x, int y, void *param);
