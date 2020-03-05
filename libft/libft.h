@@ -18,7 +18,8 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
-# define BUFF_SIZE 5
+# define BUFF_SIZE 500
+# define MAX_FD 11000 //WHATTIME
 # define PRC "\x1b[31m"
 # define PWC "\x1b[107m"
 # define PGC "\x1b[32m"

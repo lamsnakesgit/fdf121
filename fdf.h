@@ -19,6 +19,7 @@
 
 # include <fcntl.h>
 # include <math.h>
+# define BS 16000
 # define WHITE 0xffffff
 # define RED 0xe80c0c
 # define WIN_W_X 500//2000
@@ -62,6 +63,8 @@ typedef struct	s_fdf
 	int		w;
 	int		h;
 	int		**z_matrix;
+	int		fd;
+	char 	*fname;
 	int		zoom;
 	int		color;
 	int		shift_x;
@@ -86,8 +89,32 @@ int		deal_mouse(int m, t_fdf *fdf);
 int		mouse_press(int button, int x, int y, void *param);
 int		ft_err();
 
+void		isometric(float *x, float *y, int z);
+void 		rot_y(float *x, float *y, float *z, float angle);
+void 		rot_z(float *x, float *y, float *z, float angle);
+
+int			deal_mouse(int m, t_fdf *fdf);
+int			deal_key(int key, t_fdf *fdf);
+
+void		draw_line(t_fdf *fdf);
+void		findpb(t_coord crd, float x1, float y1, t_fdf *fdf);
+float		mod(float a);
+
+int			mouse_press(int press, int x, int y, void *param);
 
 
+//t_list			*valroom_fill1(t_list **br, char **roomcor, t_llrc *ok);
+//int				val_cord(char **roomcor);
+//char			**valrmc_s(char *line, t_llrc *ko);
+//int				savemarg(t_llrc *lrc, int cm);
+//int				stcheck(char **line, t_llrc *lrc, int cm);
+//int				roomlinkblock(char **line, t_llrc *lrc);
+//int				turninarr(t_llrc *llrc);
+//int				ft_err(void);
+
+char			**lines(char *buf);
+
+char			**processmap(int fd);
 
 
 

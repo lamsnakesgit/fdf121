@@ -1,6 +1,6 @@
 NAME = ffdf
-SRC = fdf.c ft_cw.c
-FLG = -Wall -Wextra -Werror
+SRC = fdf.c ft_cw.c drawer.c press_fdf.c  ft_rotation.c ft_initd.c
+FLG = -Wall -Wextra -Werror -Ofast
 DBG = -g
 all: $(NAME)
 

@@ -1,12 +1,13 @@
 cmake_minimum_required(VERSION 3.15)
-project(fdf C)
+project(fdf121 C)
 
 set(CMAKE_C_STANDARD 11)
 
 include_directories(.)
 include_directories(libft)
+include_directories(minilibx_macos)
 
-add_executable(fdf
+add_executable(fdf121
         libft/bonus.c
         libft/ft_atoi.c
         libft/ft_atoiar.c
@@ -102,11 +103,26 @@ add_executable(fdf
         libft/tip_s_c.c
         libft/tip_u.c
         libft/tip_x.c
+#        minilibx_macos/font.c
+#        minilibx_macos/mlx.h
+#        minilibx_macos/mlx_init_loop.m
+#        minilibx_macos/mlx_int.h
+#        minilibx_macos/mlx_int_str_to_wordtab.c
+#        minilibx_macos/mlx_new_image.m
+#        minilibx_macos/mlx_new_window.h
+#        minilibx_macos/mlx_new_window.m
+#        minilibx_macos/mlx_rgb.c
+#        minilibx_macos/mlx_shaders.c
+#        minilibx_macos/mlx_xpm.c
         fdf.c
         fdf.h
-        ft_cw.c)
+        ft_cw.c
+        ft_rotation.c
+        press_fdf.c
+        drawer.c
+        ft_initd.c)
 
-target_link_libraries(fdf
+target_link_libraries(fdf121
         "-lmlx"
         "-framework OpenGL"
         "-framework AppKit"
