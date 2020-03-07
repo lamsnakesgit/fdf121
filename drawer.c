@@ -142,7 +142,7 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
     {
 	    er2 = er * 2;
 	//    if (crd.y >= 0 && crd.y < fdf->h && crd.x >= 0 && crd.x <= fdf->w)
-	    if (crd.y >= 0 && crd.y < WIN_W_X && crd.x >= 0 && crd.x <= WIN_W_X)
+	    if (crd.y >= 0 && crd.y < fdf->not_my_bus && crd.x >= 0 && crd.x <= fdf->not_my_bus)//WIN_W_X)
 	    {
         //    i = fdf->w * crd.y + crd.x;
 		    i = fdf->not_my_bus * crd.y + crd.x;
@@ -199,6 +199,16 @@ void		draw_line(t_fdf *fdf)
 	int y;
 
 	ft_blank(fdf->img, fdf->not_my_bus);
+	ft_bzero(fdf->img, fdf->not_my_bus);
+	ft_bzero(fdf->img, WIN_W_X);
+	int q = 0;
+	int *ar;
+	ar = fdf->img;
+	while (q < WIN_W_X * WIN_W_X * 4)
+	{
+		ar[q] = 0x00;//0x00ffff;
+		++q;
+	}
 	crd.y = 0;
 //	printf("fdf-h=%d fdf->w=%d \n", fdf->h, fdf->w);
 	while (crd.y < fdf->h )//-2 )
@@ -215,7 +225,7 @@ void		draw_line(t_fdf *fdf)
 			++crd.x;
 		}
 		++crd.y;
-//		mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 500, 500, WHITE, "HERE");
+		mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 50, 50, WHITE, "HERE");
 //        break ;///
 	}
 	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);

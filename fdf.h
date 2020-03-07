@@ -24,6 +24,13 @@
 # define REVWHITE 0xff00ff //ffffff0x
 
 # define RED 0xe80c0c
+# define CYAN 0xffff
+//CYAN 0x00ffff
+# define PINK 0xff00ff
+# define BLUE 0x0000ff
+# define YELLOW 0xffff00
+# define GRAY 0xfffff0
+
 # define CLR 0x00FF00
 # define WIN_W_X 500//2000//must be equal?
 //# define WIN_H_Y 500;//600//1300
