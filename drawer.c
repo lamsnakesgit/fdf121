@@ -112,7 +112,7 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
     y1 *= fdf->zoom;
 //	z *= fdf->zoom; z1 *= fdf->zoom;//
     //=========color==============
-//fdf->color = (z || z1) ? RED : WHITE;
+	fdf->color = (z || z1) ? RED : WHITE;
     //==========3D==========ISO
     if (fdf->projection == ISO)
     {
@@ -122,10 +122,10 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
         isometric(&x1, &y1, z1);
     }
     //			SHIFT==========
-    crd.x += fdf->shift_x; //150;
-    crd.y += fdf->shift_y;//150;
-    x1 += fdf->shift_x;//150;//05;
-    y1 += fdf->shift_y;//150;
+//    crd.x += fdf->shift_x; //150;
+  //  crd.y += fdf->shift_y;//150;
+  //  x1 += fdf->shift_x;//150;//05;
+  //  y1 += fdf->shift_y;//150;
     ///=======================NEW
 //	er = 0;
 	dy = mod(y1 - crd.y);
@@ -136,21 +136,23 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 //	er2 = dy + 1;
 //	nx = crd.x;
 //	ny = crd.y;
-	fdf->color = RED;//WHITE;//
+	//fdf->color = RED;//WHITE;//
 	i = 0;
 	while (crd.x != x1 || crd.y != y1)
     {
 	    er2 = er * 2;
-	    if (crd.y >= 0 && crd.y < fdf->h && crd.x >= 0 && crd.x <= fdf->w)
-	    {
-            i = fdf->w * crd.y + crd.x;
+	//    if (crd.y >= 0 && crd.y < fdf->h && crd.x >= 0 && crd.x <= fdf->w)
+	  //  {
+        //    i = fdf->w * crd.y + crd.x;
+		    i = fdf->not_my_bus * crd.y + crd.x;
+		//    i = WIN_W_X * crd.y + crd.x;
         printf("i=%d w=%d h=%d y=%d x=%d y2=%d x2=%d\n", i,fdf->w,fdf->h,crd.y,crd.x,y1,x1);
             fdf->img[i] = fdf->color;
-            if (i % 2)
-                fdf->img[i] = WHITE;
-        }
-        printf("i=%d w=%d h=%d y=%d x=%d y2=%d x2=%d\n", i,fdf->w,fdf->h,crd.y,crd.x,y1,x1);
-	    printf("AFTER");
+            //if (i % 2)
+           //     fdf->img[i] = REVWHITE;//WHITE;
+      //  }
+     //   printf("i=%d w=%d h=%d y=%d x=%d y2=%d x2=%d\n", i,fdf->w,fdf->h,crd.y,crd.x,y1,x1);
+	 //   printf("AFTER");
 	    if (er2 > -dy)
 	    {
 	        er -= dy;

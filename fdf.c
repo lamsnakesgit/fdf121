@@ -179,7 +179,7 @@ int			data_init(t_fdf *fdf)
 	fdf->color = 0;//SEG?
 	fdf->endian = 0;
 	fdf->img = NULL;
-    fdf->img = (int *)malloc(sizeof(int) * fdf->w);
+    //fdf->img = (int *)malloc(sizeof(int) * fdf->w);
 	fdf->img_ptr = mlx_new_image(fdf->mlx_ptr, 2000, 1300);
 ///fdf->img = (int *)	mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, &fdf->w, &fdf->endian);
     fdf->img = (int *)	mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, &fdf->not_my_bus, &fdf->endian);

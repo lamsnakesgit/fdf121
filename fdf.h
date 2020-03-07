@@ -21,6 +21,8 @@
 # include <math.h>
 # define BS 16000
 # define WHITE 0xffffff
+# define REVWHITE 0xff00ff //ffffff0x
+
 # define RED 0xe80c0c
 # define CLR 0x00FF00
 # define WIN_W_X 500//2000//must be equal?
