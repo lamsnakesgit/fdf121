@@ -85,15 +85,79 @@ void		findpb(t_coord crd, int x1, int y1, t_fdf *fdf)
 //		++i;
 		mlx_pixel_put(fdf->mlx_ptr, fdf->win_ptr, crd.x, crd.y, fdf->color);//0xffffff);
 		//	printf("MPPUT=%d y=%d x-x1=%d y-y1=%d\n", x ,y, (int)(x-x1), (int)(y-y1));
-		crd.x += 1;//x_st;
+		crd.x += x_st;//1;//x_st;
 		crd.y += y_st;
 	}
 }
-/*
-void 		brs(t_coord crd, int x1, int x2, t_fdf *fdf)
+void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 {
-	;
-}*/
+	int dy;
+	int dx;
+	int er;
+	int er2;
+	int sy;
+	int sx;
+	int nx;
+	int ny;
+	int i;
+
+//	er = 0;
+	dy = mod(y1 - crd.y);
+	dx = mod(x1 - crd.x);
+	sy = crd.y < y1 ? 1 : -1;
+	sx = crd.x < x1 ? 1 : -1;
+	er = dx - dy;//!!
+//	er2 = dy + 1;
+	nx = crd.x;
+	ny = crd.y;
+	fdf->color = RED;//WHITE;//
+	i = 0;
+	while (nx != x1 || ny != y1)
+    {
+	    er2 = er * 2;
+
+	    i = fdf->w * ny + nx;
+	    printf("i=%d\n", i);
+	    fdf->img[i] = fdf->color;
+	    printf("i=%d\n", i);
+	    if (er2 > -dy)
+	    {
+	        er -= dy;
+	        nx += sx;
+        }
+	    if (er2 < dx)
+	    {
+            er += dx;
+            ny += sy;
+        }
+//	    er = er + er2;
+//	    if (er >= dx + 1)
+//        {
+//	        ny += sy;
+//	        er = er - (dx + 1);
+//        }
+//	    nx += sx;
+    }
+}
+//
+//    setPixel(x2, y2);
+//    while(x1 != x2 || y1 != y2)
+//    {
+//        setPixel(x1, y1);
+//        const int error2 = error * 2;
+//        //
+//        if(error2 > -deltaY)
+//        {
+//            error -= deltaY;
+//            x1 += signX;
+//        }
+//        if(error2 < deltaX)
+//        {
+//            error += deltaX;
+//            y1 += signY;
+//        }
+//    }
+
 void		draw_line(t_fdf *fdf)
 {
 	t_coord	crd;
@@ -109,13 +173,15 @@ void		draw_line(t_fdf *fdf)
 		while (crd.x < fdf->w )//-2 )
 		{
 			if (crd.x < fdf->w - 1)
-				findpb(crd, crd.x + 1, crd.y, fdf);
+				brs(crd, crd.x + 1, crd.y, fdf);//findpb(crd, crd.x + 1, crd.y, fdf);
 			//		printf("WER=%f crdy=%f\n", crd.x, crd.y);
 			if (crd.y < fdf->h - 1)
-				findpb(crd, crd.x, crd.y + 1, fdf);
+				brs(crd, crd.x, crd.y + 1, fdf);//findpb(crd, crd.x, crd.y + 1, fdf);
 			++crd.x;
 		}
 		++crd.y;
+//		mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 500, 500, WHITE, "HERE");
+//        break ;///
 	}
-//	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);
+	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);
 }

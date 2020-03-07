@@ -69,6 +69,7 @@ void		fill_matrix(int *z_line, char *line)//t_fdf *data, char *line)
 	}
 	free(nums);
 }
+
 int 		calc_high(t_fdf *fdf, char **map)
 {
 	int i;
@@ -179,8 +180,8 @@ int			data_init(t_fdf *fdf)
 	fdf->endian = 0;
 	fdf->img = NULL;
 	fdf->img = (int *)malloc(sizeof(int) * fdf->w);
-//	fdf->img_ptr = mlx_new_image(fdf->mlx_ptr, 2000, 1300);
-//	fdf->img = (int *)	mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, &fdf->w, &fdf->endian);
+	fdf->img_ptr = mlx_new_image(fdf->mlx_ptr, 2000, 1300);
+	fdf->img = (int *)	mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, &fdf->w, &fdf->endian);
 	int i = 0;
 	printf("fdfingi=%d\n", fdf->img[0]);
 /*	while (i < fdf->w * fdf->h)

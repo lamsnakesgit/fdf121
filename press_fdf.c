@@ -16,6 +16,7 @@ int			deal_key(int key, t_fdf *fdf)
 {
 	int	r;
 
+//	mlx_destroy_image(fdf->mlx_ptr, fdf->img_ptr);//??
 	if (key != 53 && key != 123 && key != 125 && key != 124 && key != 126 && key != 12 && key != 13)
 		printf("key=%d\n", key);
 	r = 0;
