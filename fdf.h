@@ -77,6 +77,7 @@ typedef struct	s_fdf
 	int		shift_y;
 	int		z_sh;
 
+	int     not_my_bus;
 	void	*mlx_ptr;
 	void	*win_ptr;
 	int		projection;

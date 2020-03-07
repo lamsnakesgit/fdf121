@@ -179,11 +179,12 @@ int			data_init(t_fdf *fdf)
 	fdf->color = 0;//SEG?
 	fdf->endian = 0;
 	fdf->img = NULL;
-	fdf->img = (int *)malloc(sizeof(int) * fdf->w);
+    fdf->img = (int *)malloc(sizeof(int) * fdf->w);
 	fdf->img_ptr = mlx_new_image(fdf->mlx_ptr, 2000, 1300);
-	fdf->img = (int *)	mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, &fdf->w, &fdf->endian);
+///fdf->img = (int *)	mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, &fdf->w, &fdf->endian);
+    fdf->img = (int *)	mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, &fdf->not_my_bus, &fdf->endian);
 	int i = 0;
-	printf("fdfingi=%d\n", fdf->img[0]);
+    printf("fdfingi=%d\n", fdf->img[0]);
 /*	while (i < fdf->w * fdf->h)
 	{
 		if (i > 2600950)
@@ -218,9 +219,10 @@ int			main(int ac, char **av)
 	if (fd < 0)
         return (ft_err());
 	close(fd);//i closed it??
-	read_file(fdf);//(data, fname);x
+	if (!read_file(fdf))//(data, fname);x
+	    exit(0);
 	data_init(fdf);
-	printf("FDFcolor=%d \n", fdf->color);
+	printf("FDFcolor=%d w=%d h=%d\n", fdf->color,fdf->w,fdf->h);
 	draw_line(fdf);
 	mlx_hook(fdf->win_ptr, 2, 0, deal_key, fdf);//3
 //	mlx_hook(fdf->win_ptr, 17, 0, deal_key, fdf);
