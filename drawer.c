@@ -145,8 +145,8 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 	    if (crd.y >= 0 && crd.y < fdf->not_my_bus && crd.x >= 0 && crd.x <= fdf->not_my_bus)//WIN_W_X)
 	    {
         //    i = fdf->w * crd.y + crd.x;
-		    i = fdf->not_my_bus * crd.y + crd.x;
-		//    i = WIN_W_X * crd.y + crd.x;
+		//    i = fdf->not_my_bus * crd.y + crd.x;
+		    i = WIN_W_X * 4 *  crd.y + crd.x;
             printf("i=%d w=%d h=%d y=%d x=%d y2=%d x2=%d\n", i,fdf->w,fdf->h,crd.y,crd.x,y1,x1);
             fdf->img[i] = fdf->color;
             //if (i % 2)
