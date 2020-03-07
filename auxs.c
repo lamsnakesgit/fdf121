@@ -21,7 +21,7 @@ int			ft_blank(void *img, int szline)
 	mg = (int *)img;
 	while (i < szline)
 	{
-	//	if (mg[i])
+		if (mg[i])
 			mg[i] = 0;
 		++i;
 	}
