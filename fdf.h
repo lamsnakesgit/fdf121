@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 16:10:34 by ddratini          #+#    #+#             */
-/*   Updated: 2020/03/04 21:11:11 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/07 21:39:30 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ char			**lines(char *buf);
 
 char			**processmap(int fd);
 
+int				ft_blank(void *img, int szline);
 
 
 
