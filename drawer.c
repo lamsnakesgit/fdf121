@@ -12,7 +12,6 @@
 
 #include "fdf.h"
 
-
 float		mod(float a)
 {
 	return (a >= 0 ? a : -a);
@@ -28,13 +27,13 @@ void		findpb(t_coord crd, int x1, int y1, t_fdf *fdf)
 //	float		z;//float
 //	float		z1;
 
-	z = fdf->z_matrix[(int)crd.y][(int)crd.x];
-	z1 = fdf->z_matrix[(int)y1][(int)x1];
+	z = fdf->z_matrix[(int)crd.y][(int)crd.x] * fdf->zoom / fdf->z_sh;//fdf->zmv;//2;
+	z1 = fdf->z_matrix[(int)y1][(int)x1] * fdf->zoom / fdf->z_sh;//2;
 //	====ZOOM!!!!!!!!!=========
-	crd.x *= fdf->zoom;
-	crd.y *= fdf->zoom;
-	x1 *= fdf->zoom;
-	y1 *= fdf->zoom;
+//	crd.x = (crd.x - fdf->w / 2) * fdf->zoom;
+//	crd.x = (crd.y - fdf->h / 2) * fdf->zoom;
+//	x1 = (x1 - fdf->w / 2) * fdf->zoom;
+//	y1 = (y1 - fdf->h / 2) * fdf->zoom;
 //	z *= fdf->zoom; z1 *= fdf->zoom;//
 	//=========color==============
 	fdf->color = (z || z1) ? RED : WHITE;
@@ -102,10 +101,10 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 //	float z1;
 	int z;
 	int z1;
-	printf(" ZSH=%d\n", fdf->z_sh);
+//	printf(" ZSH=%d\n", fdf->z_sh);
 	////=================OLD
-    z = fdf->z_matrix[(int)crd.y][(int)crd.x];
-    z1 = fdf->z_matrix[(int)y1][(int)x1];
+    z = fdf->z_matrix[(int)crd.y][(int)crd.x] * fdf->z_sh;
+    z1 = fdf->z_matrix[(int)y1][(int)x1] * fdf->z_sh;
 //	====ZOOM!!!!!!!!!=========
     crd.x *= (int)(fdf->zoom);
     crd.y *= (int)(fdf->zoom);
@@ -116,7 +115,10 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
     ////===Z_SH
 //	z *= fdf->zoom; z1 *= fdf->zoom;//
     //=========color==============
-	fdf->color = (z || z1) ? RED : WHITE;
+	fdf->color = (z || z1) > 0 ? RED : WHITE;
+//	z += fdf->z_sh;
+//	z1 += fdf->z_sh;
+//	fdf->color = (z || z1) > 5 && (z || z1) < 9 ? YELLOW : RED;
     //==========3D==========ISO
 	x_rotate(fdf, &crd.y, &z);
 	x_rotate(fdf, &y1, &z1);
@@ -150,7 +152,6 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 	i = 0;
 	while (crd.x != x1 || crd.y != y1)
     {
-		printf("ZOOM=%d\n\n\n", fdf->zoom);
 	    er2 = er * 2;
 	//    if (crd.y >= 0 && crd.y < fdf->h && crd.x >= 0 && crd.x <= fdf->w)
 	    if (crd.y >= 0 && crd.y < fdf->not_my_bus && crd.x >= 0 && crd.x <= fdf->not_my_bus)//WIN_W_X)
@@ -158,7 +159,7 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
         //    i = fdf->w * crd.y + crd.x;
 		//    i = fdf->not_my_bus * crd.y + crd.x;
 		    i = WIN_W_X * 4 *  crd.y + crd.x;
-            printf("i=%d w=%d h=%d y=%d x=%d y2=%d x2=%d\n", i,fdf->w,fdf->h,crd.y,crd.x,y1,x1);
+     //       printf("i=%d w=%d h=%d y=%d x=%d y2=%d x2=%d\n", i,fdf->w,fdf->h,crd.y,crd.x,y1,x1);
             fdf->img[i] = fdf->color;
             //if (i % 2)
            //     fdf->img[i] = REVWHITE;//WHITE;
@@ -208,7 +209,7 @@ void		draw_line(t_fdf *fdf)
 	t_coord	crd;
 	int x;
 	int y;
-	printf("33asdsdfgsfgsdfg\n");
+//	printf("33asdsdfgsfgsdfg\n");
 
 //	ft_blank(fdf->img, fdf->not_my_bus);
 //	printf("asdsdfgsfgsdfg\n");
@@ -244,6 +245,8 @@ void		draw_line(t_fdf *fdf)
 		++crd.y;
 //        break ;///
 	}
-	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 50, 50, WHITE, "HERE");
 	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);
+	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 50, 50, WHITE, "P - parallel I - ISO\nnumpad - rotate\n");
+	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 50, 50, WHITE, "numpad - rotate\n");
+	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 50, 50, WHITE, "\nd");
 }

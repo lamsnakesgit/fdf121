@@ -35,8 +35,8 @@
 # define WIN_W_X 500//2000//must be equal?
 //# define WIN_H_Y 500;//600//1300
 # define ISO_ANG 0.523599
-# define PRL 1
-# define ISO 3
+# define PRL 35//p-35- I=34//1
+# define ISO 34//3
 # define ESC 53
 
 # define ANGLE 0
@@ -105,6 +105,9 @@ typedef struct	s_fdf
 	float     angle_y;
 	float     angle_x;
 	float     angle_z;
+	int      zmv;
+	int      ymv;
+	int         xmv;
 }				t_fdf;
 
 void	draw_line(t_fdf *fdf);

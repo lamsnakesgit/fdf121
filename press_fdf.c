@@ -36,10 +36,10 @@ int			deal_key(int key, t_fdf *fdf)
 		fdf->shift_x -= 10;
 	if (key == 124)
 		fdf->shift_x += 10;
-	if (key == 6)//z
-		fdf->projection = 1;
-	if (key == 7)//x
-		fdf->projection = 3;
+	if (key == PRL)//6)//z
+		fdf->projection = PRL;//1;
+	if (key == ISO)//7)//x
+		fdf->projection = ISO;//3;
 	if (key == 0)//8) A-0
 		fdf->z_sh += 0.5;
 	if (key == 1)// && fdf->z_sh > 0)//S-1

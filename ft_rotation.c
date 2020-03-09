@@ -40,7 +40,7 @@ void		isometric (int *x, int *y, int z, t_fdf *fdf)
 	prev_x = *x;
 	prev_y = *y;
 	*x = (prev_x - prev_y) * cos(0.523599);//(0.8);
-	*y = (prev_x + prev_y) * sin(0.523599) -z * fdf->z_sh;//(0.8) - z;
+	*y = (prev_x + prev_y) * sin(0.523599) -z;// * fdf->z_sh;//(0.8) - z;
 }
 
 void	x_rotate(t_fdf *fdf, int *y, int *z)

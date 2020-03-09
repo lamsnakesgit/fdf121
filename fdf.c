@@ -192,6 +192,9 @@ int			data_init(t_fdf *fdf)
 	fdf->angle_y = 0;
 	fdf->angle_x = 0;
 	fdf->angle_z = 0;
+	fdf->zmv = 1;
+	fdf->xmv = WIN_W_X / 2;
+	fdf->ymv = WIN_W_X / 2;
 	fdf->projection = PRL;// 1;
 	fdf->zoom = 10;
 	fdf->shift_x = 50;

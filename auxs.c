@@ -27,3 +27,8 @@ int			ft_blank(void *img, int szline)
 	}
 	return (0);
 }
+/*
+void        ft_modify()
+{
+	x_rotate(fdf, &x, &y, );
+}*/
