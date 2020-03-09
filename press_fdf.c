@@ -41,21 +41,23 @@ int			deal_key(int key, t_fdf *fdf)
 	if (key == 7)//x
 		fdf->projection = 3;
 	if (key == 0)//8) A-0
-		fdf->z_sh += 1;
-	if (key == 1)//S-1
-		fdf->z_sh -= 1;
-	if (key == UP_Z)
-		fdf->rot_z += 10;
-	if (key == DOWN_Z)
-		fdf->rot_z -= 10;
+		fdf->z_sh += 0.5;
+	if (key == 1)// && fdf->z_sh > 0)//S-1
+		fdf->z_sh -= 0.5;
+	if (key == UP_Z)//7
+		fdf->angle_z += 0.1;
+	//fdf->rot_z += 10;
+	if (key == DOWN_Z)//9
+		fdf->angle_z -= 0.1;
+//	fdf->rot_z -= 10;
 	if (key == UP_X)
-		fdf->rot_x += 10;
+		fdf->angle_x += 0.1;
 	if (key == DOWN_X)
-		fdf->rot_x -= 10;
+		fdf->angle_x -= 0.1;
 	if (key == UP_Y)
-		fdf->rot_y += 10;
+		fdf->angle_y += 0.1;
 	if (key == DOWN_Y)
-		fdf->rot_y -= 10;
+		fdf->angle_y -= 0.1;
 	if (key == 12)//q w12 13)
 		fdf->zoom += 1;//-10;
 	if (key == 13)
@@ -66,7 +68,7 @@ int			deal_key(int key, t_fdf *fdf)
 	//	mlx_loop(fdf->mlx_ptr);
 	//	mlx_mouse_hook(fdf->win_ptr, deal_mouse, fdf);
 //	}
-	mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);//putimage?
+//	mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);//putimage?
 	draw_line(fdf);
 	return (1);
 }

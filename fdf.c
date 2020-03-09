@@ -197,11 +197,14 @@ int			data_init(t_fdf *fdf)
 	fdf->rot_x = 0;
 	fdf->rot_y = 0;
 	fdf->rot_z = 0;
+	fdf->angle_y = 0;
+	fdf->angle_x = 0;
+	fdf->angle_z = 0;
 	fdf->projection = PRL;// 1;
 	fdf->zoom = 10;
 	fdf->shift_x = 50;
 	fdf->shift_y = 50;
-	fdf->z_sh = 0;
+	fdf->z_sh = 1;
 	return (0);
 }
 

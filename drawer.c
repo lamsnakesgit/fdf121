@@ -98,8 +98,10 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 	int nx;
 	int ny;
 	int i;
-	float z;
-	float z1;
+//	float z;
+//	float z1;
+	int z;
+	int z1;
 	printf(" ZSH=%d\n", fdf->z_sh);
 	////=================OLD
     z = fdf->z_matrix[(int)crd.y][(int)crd.x];
@@ -116,6 +118,12 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
     //=========color==============
 	fdf->color = (z || z1) ? RED : WHITE;
     //==========3D==========ISO
+	x_rotate(fdf, &crd.y, &z);
+	x_rotate(fdf, &y1, &z1);
+	y_rotate(fdf, &crd.x, &z);
+	y_rotate(fdf, &x1, &z1);//z;
+	z_rotate(fdf, &crd.x, &crd.y);
+	z_rotate(fdf, &x1, &y1);
     if (fdf->projection == ISO)
     {
 //		z += fdf->z_sh;//SHIFT Z ZOOM

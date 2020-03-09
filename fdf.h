@@ -44,13 +44,15 @@
 # define Y_UP 125
 # define X_DOWN 123
 # define X_UP 124
+//86 88 4 6
+# define UP_Z 91//4  -7
+# define DOWN_Z 84  //-9
+# define UP_Y 89//44
+# define DOWN_Y 92//
+# define UP_X 86
+# define DOWN_X 88
 
-# define UP_Z 4
-# define UP_Y 44
-# define UP_X 444
-# define DOWN_Z 4444
-# define DOWN_Y 44444
-# define DOWN_X 4444444
+//8279  91 84 89 92
 
 
 /*
@@ -86,7 +88,7 @@ typedef struct	s_fdf
 	int		color;
 	int		shift_x;
 	int		shift_y;
-	int		z_sh;
+	float		z_sh;
 
 	int     not_my_bus;
 	void	*mlx_ptr;
@@ -99,6 +101,10 @@ typedef struct	s_fdf
 	int		*img;
 	int		bpp;
 	int		endian;
+
+	float     angle_y;
+	float     angle_x;
+	float     angle_z;
 }				t_fdf;
 
 void	draw_line(t_fdf *fdf);
@@ -138,6 +144,11 @@ char			**lines(char *buf);
 char			**processmap(int fd);
 
 int				ft_blank(void *img, int szline);
+
+void	x_rotate(t_fdf *fdf, int *y, int *z);
+void	y_rotate(t_fdf *fdf, int *x, int *z);
+void	z_rotate(t_fdf *fdf, int *x, int *y);
+
 
 
 
