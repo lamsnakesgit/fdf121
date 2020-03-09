@@ -43,7 +43,11 @@ int			deal_key(int key, t_fdf *fdf)
 	if (key == 0)//8) A-0
 		fdf->z_sh += 0.5;
 	if (key == 1)// && fdf->z_sh > 0)//S-1
+	{
 		fdf->z_sh -= 0.5;
+	}
+	if (fdf->z_sh >= 20 || fdf->z_sh == -20)
+		fdf->z_sh = 20;
 	if (key == UP_Z)//7
 		fdf->angle_z += 0.1;
 	//fdf->rot_z += 10;
