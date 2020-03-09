@@ -63,8 +63,10 @@
 
 typedef	struct	s_coord
 {
-	float 	x;
-	float 	y;
+//	float 	x;
+//	float 	y;
+	int 	x;
+	int 	y;
 	int		z;
 	int 	delta_x;
 	int		delta_y;

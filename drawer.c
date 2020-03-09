@@ -105,8 +105,8 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
     z = fdf->z_matrix[(int)crd.y][(int)crd.x];
     z1 = fdf->z_matrix[(int)y1][(int)x1];
 //	====ZOOM!!!!!!!!!=========
-    crd.x *= fdf->zoom;
-    crd.y *= fdf->zoom;
+    crd.x *= (int)(fdf->zoom);
+    crd.y *= (int)(fdf->zoom);
     x1 *= fdf->zoom;
     y1 *= fdf->zoom;
     //=====ZSH
@@ -211,11 +211,11 @@ void		draw_line(t_fdf *fdf)
 	int q = 0;
 	int *ar;
 	ar = fdf->img;
-//	while (q < WIN_W_X * WIN_W_X * 4)
-//	{
-//		ar[q] = 0x00;//0x00ffff;
-//		++q;
-//	}
+	while (q < WIN_W_X * WIN_W_X * 4)
+	{
+		ar[q] = 0x00;//0x00ffff;
+		++q;
+	}
 	crd.y = 0;
 //	printf("fdf-h=%d fdf->w=%d \n", fdf->h, fdf->w);
 	while (crd.y < fdf->h )//-2 )
@@ -225,17 +225,17 @@ void		draw_line(t_fdf *fdf)
 		while (crd.x < fdf->w )//-2 )
 		{
 			if (crd.x < fdf->w - 1)
-				//brs(crd, crd.x + 1, crd.y, fdf);
-				findpb(crd, crd.x + 1, crd.y, fdf);
+				brs(crd, crd.x + 1, crd.y, fdf);
+				//findpb(crd, crd.x + 1, crd.y, fdf);//lol putimg and dissapear
 			//		printf("WER=%f crdy=%f\n", crd.x, crd.y);
 			if (crd.y < fdf->h - 1)
-				//brs(crd, crd.x, crd.y + 1, fdf);
-				findpb(crd, crd.x, crd.y + 1, fdf);
+				brs(crd, crd.x, crd.y + 1, fdf);
+				//findpb(crd, crd.x, crd.y + 1, fdf);
 			++crd.x;
 		}
 		++crd.y;
-		mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 50, 50, WHITE, "HERE");
 //        break ;///
 	}
-//	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);
+	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 50, 50, WHITE, "HERE");
+	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);
 }
