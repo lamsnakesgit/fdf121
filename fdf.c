@@ -133,7 +133,11 @@ int			read_file(t_fdf *fdf)
 	fd = open(fdf->fname, O_RDONLY);
 	i = 0;
 	if (!(map = processmap(fd)))
+	{
+		free_z(fdf, fdf->h);
+		free(fdf->z_matrix);
 		return (0);
+	}
 //	fdf->h = calc_high(fdf, map);
 //	fdf->w = ft_count_w(map[0], ' ');//''char
 //	if (fdf->w < 0 || fdf->h < 0)//point??????
@@ -156,18 +160,6 @@ int			read_file(t_fdf *fdf)
 	}
 */	close(fd);
 	fdf->z_matrix[i] = NULL;//0;
-	i = 0;
-	int y = 0;
-/*	while (i < fdf->h)//(i <= fdf->h)
-	{
-		y = -1;
-		while (++y < fdf->w - 2)
-		{
-            printf("%3d ", fdf->z_matrix[i][y]);//printf("%3d ", fdf->z_matrix[i][y]);
-        }
-		++i;
-		printf("\nPPPP");
-	}*/
 	return (1);
 }
 
