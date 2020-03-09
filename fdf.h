@@ -63,8 +63,8 @@
 
 typedef	struct	s_coord
 {
-	int	x;
-	int	y;
+	float 	x;
+	float 	y;
 	int		z;
 	int 	delta_x;
 	int		delta_y;
@@ -105,8 +105,8 @@ int		deal_mouse(int m, t_fdf *fdf);
 int		mouse_press(int button, int x, int y, void *param);
 int		ft_err();
 
-//void		isometric(float *x, float *y, int z);
-void		isometric(int *x, int *y, int z);
+//void		isometric(float *x, float *y, int z, t_fdf *);
+void		isometric(int *x, int *y, int z, t_fdf *fdf);
 void 		rot_y(float *x, float *y, float *z, float angle);
 void 		rot_z(float *x, float *y, float *z, float angle);
 

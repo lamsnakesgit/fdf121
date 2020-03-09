@@ -21,12 +21,12 @@ float		mod(float a)
 void		findpb(t_coord crd, int x1, int y1, t_fdf *fdf)
 {
 	float	x_st;
-	float	y_st;
-//	int		x_st;
-//	int		y_st;
+	float	y_st;//	int		x_st;//	int		y_st;
 	int		max;
 	int		z;//float
 	int		z1;
+//	float		z;//float
+//	float		z1;
 
 	z = fdf->z_matrix[(int)crd.y][(int)crd.x];
 	z1 = fdf->z_matrix[(int)y1][(int)x1];
@@ -43,8 +43,8 @@ void		findpb(t_coord crd, int x1, int y1, t_fdf *fdf)
 	{
 //		z += fdf->z_sh;//SHIFT Z ZOOM
 //		z1 += fdf->z_sh;
-		isometric(&crd.x, &crd.y, z);
-		isometric(&x1, &y1, z1);
+		isometric(&crd.x, &crd.y, z,fdf);
+		isometric(&x1, &y1, z1,fdf);
 	}
 	//			SHIFT==========
 	crd.x += fdf->shift_x; //150;
@@ -76,8 +76,6 @@ void		findpb(t_coord crd, int x1, int y1, t_fdf *fdf)
 	{
 	//	i = (int)(fdf->w * (int)crd.y + (int)crd.x);
 	//	printf("i=%d fdf->color=%d\n", i, fdf->color);
-		//	if (i == fdf->w)
-		//		break;
 		//	printf("i=%d fdfimgi=%d\n", i, fdf->color);//fdf->img[0]);
 	//	fdf->img[i] = fdf->color;
 //		if (i - 1 >= 0)
@@ -100,8 +98,9 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 	int nx;
 	int ny;
 	int i;
-	int z;
-	int z1;
+	float z;
+	float z1;
+	printf(" ZSH=%d\n", fdf->z_sh);
 	////=================OLD
     z = fdf->z_matrix[(int)crd.y][(int)crd.x];
     z1 = fdf->z_matrix[(int)y1][(int)x1];
@@ -110,6 +109,9 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
     crd.y *= fdf->zoom;
     x1 *= fdf->zoom;
     y1 *= fdf->zoom;
+    //=====ZSH
+//    z += fdf->z_sh;
+    ////===Z_SH
 //	z *= fdf->zoom; z1 *= fdf->zoom;//
     //=========color==============
 	fdf->color = (z || z1) ? RED : WHITE;
@@ -118,8 +120,8 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
     {
 //		z += fdf->z_sh;//SHIFT Z ZOOM
 //		z1 += fdf->z_sh;
-        isometric(&crd.x, &crd.y, z);
-        isometric(&x1, &y1, z1);
+        isometric(&crd.x, &crd.y, z, fdf);
+        isometric(&x1, &y1, z1, fdf);
     }
     //			SHIFT==========
     crd.x += fdf->shift_x; //150;
@@ -140,6 +142,7 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 	i = 0;
 	while (crd.x != x1 || crd.y != y1)
     {
+		printf("ZOOM=%d\n\n\n", fdf->zoom);
 	    er2 = er * 2;
 	//    if (crd.y >= 0 && crd.y < fdf->h && crd.x >= 0 && crd.x <= fdf->w)
 	    if (crd.y >= 0 && crd.y < fdf->not_my_bus && crd.x >= 0 && crd.x <= fdf->not_my_bus)//WIN_W_X)
@@ -197,18 +200,22 @@ void		draw_line(t_fdf *fdf)
 	t_coord	crd;
 	int x;
 	int y;
+	printf("33asdsdfgsfgsdfg\n");
 
-	ft_blank(fdf->img, fdf->not_my_bus);
-	ft_bzero(fdf->img, fdf->not_my_bus);
-	ft_bzero(fdf->img, WIN_W_X);
+//	ft_blank(fdf->img, fdf->not_my_bus);
+//	printf("asdsdfgsfgsdfg\n");
+//	//ft_bzero(fdf->img, fdf->not_my_bus);
+//	printf("asdsdfgsfgsdfg\n");
+//	//ft_bzero(fdf->img, WIN_W_X);
+//	printf("asdsdfgsfgsdfg\n");
 	int q = 0;
 	int *ar;
 	ar = fdf->img;
-	while (q < WIN_W_X * WIN_W_X * 4)
-	{
-		ar[q] = 0x00;//0x00ffff;
-		++q;
-	}
+//	while (q < WIN_W_X * WIN_W_X * 4)
+//	{
+//		ar[q] = 0x00;//0x00ffff;
+//		++q;
+//	}
 	crd.y = 0;
 //	printf("fdf-h=%d fdf->w=%d \n", fdf->h, fdf->w);
 	while (crd.y < fdf->h )//-2 )
@@ -218,15 +225,17 @@ void		draw_line(t_fdf *fdf)
 		while (crd.x < fdf->w )//-2 )
 		{
 			if (crd.x < fdf->w - 1)
-				brs(crd, crd.x + 1, crd.y, fdf);//findpb(crd, crd.x + 1, crd.y, fdf);
+				//brs(crd, crd.x + 1, crd.y, fdf);
+				findpb(crd, crd.x + 1, crd.y, fdf);
 			//		printf("WER=%f crdy=%f\n", crd.x, crd.y);
 			if (crd.y < fdf->h - 1)
-				brs(crd, crd.x, crd.y + 1, fdf);//findpb(crd, crd.x, crd.y + 1, fdf);
+				//brs(crd, crd.x, crd.y + 1, fdf);
+				findpb(crd, crd.x, crd.y + 1, fdf);
 			++crd.x;
 		}
 		++crd.y;
 		mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 50, 50, WHITE, "HERE");
 //        break ;///
 	}
-	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);
+//	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);
 }

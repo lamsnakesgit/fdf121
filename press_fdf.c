@@ -41,9 +41,9 @@ int			deal_key(int key, t_fdf *fdf)
 	if (key == 7)//x
 		fdf->projection = 3;
 	if (key == 0)//8) A-0
-		fdf->z_sh += 10;
+		fdf->z_sh += 1;
 	if (key == 1)//S-1
-		fdf->z_sh -= 10;
+		fdf->z_sh -= 1;
 	if (key == UP_Z)
 		fdf->rot_z += 10;
 	if (key == DOWN_Z)
@@ -66,7 +66,7 @@ int			deal_key(int key, t_fdf *fdf)
 	//	mlx_loop(fdf->mlx_ptr);
 	//	mlx_mouse_hook(fdf->win_ptr, deal_mouse, fdf);
 //	}
-	mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
+	mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);//putimage?
 	draw_line(fdf);
 	return (1);
 }

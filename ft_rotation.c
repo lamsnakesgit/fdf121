@@ -31,7 +31,8 @@ void 		rot_y(float *x, float *y, float *z, float angle)
 //	z = -x * cos(angle) + z * cos(angle);
 }
 
-void		isometric(int *x, int *y, int z)//(float *x, float *y, int z)
+//void		isometric (float *x, float *y, int z, t_fdf *fdf)
+void		isometric (int *x, int *y, int z, t_fdf *fdf)
 {
 	float	prev_x;
 	float	prev_y;
@@ -39,5 +40,5 @@ void		isometric(int *x, int *y, int z)//(float *x, float *y, int z)
 	prev_x = *x;
 	prev_y = *y;
 	*x = (prev_x - prev_y) * cos(0.523599);//(0.8);
-	*y = (prev_x + prev_y) * sin(0.523599) -z ;//(0.8) - z;
+	*y = (prev_x + prev_y) * sin(0.523599) -z * fdf->z_sh;//(0.8) - z;
 }
