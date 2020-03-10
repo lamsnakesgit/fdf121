@@ -120,7 +120,8 @@ add_executable(fdf121
         ft_rotation.c
         press_fdf.c
         drawer.c
-        ft_initd.c)
+        ft_initd.c
+        auxs.c)
 
 target_link_libraries(fdf121
         "-lmlx"

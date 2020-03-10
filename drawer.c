@@ -103,8 +103,8 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 	int z1;
 //	printf(" ZSH=%d\n", fdf->z_sh);
 	////=================OLD
-    z = fdf->z_matrix[(int)crd.y][(int)crd.x] * fdf->z_sh;
-    z1 = fdf->z_matrix[(int)y1][(int)x1] * fdf->z_sh;
+	z = fdf->z_matrix[(int)crd.y][(int)crd.x] * fdf->z_sh;
+	z1 = fdf->z_matrix[(int)y1][(int)x1] * fdf->z_sh;
 //	====ZOOM!!!!!!!!!=========
     crd.x *= (int)(fdf->zoom);
     crd.y *= (int)(fdf->zoom);

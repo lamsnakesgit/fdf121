@@ -43,10 +43,12 @@ int         get_width(t_fdf *fdf)
 	fd = open(fdf->fname, O_RDONLY);
 	if (fd < 0)
 		return(0);//ft_err());
-	ret = get_next_line(fd, &line);
-	if (ret < 0)//1 ???line?
+    ret = get_next_line(fd, &line);
+    printf("BP1.1.1.1gw\nret=%d\nline=%%s", ret);//line);
+    if (ret < 0)//1 ???line?
 		return (0);
 	w = ft_count_w(line, ' ');//ft_strsplit(line, ' ');//ft_wdcounter(line, ' ');
+    printf("BP1.1.1.2gw\n");
 	free(line);
 	close(fd);
 	fdf->w = w;
@@ -104,10 +106,13 @@ int 		calc_size(t_fdf *fdf)
 {
 	int i;
 
+    printf("BP1.1.1\n");
 	if (!get_high(fdf))
 		return (0);
+    printf("BP1.1.2\n");
 	if (!get_width(fdf))
 		return (0);
+    printf("BP1.1.3\n");
 	if (!(fdf->z_matrix = (int **)malloc(sizeof(int*) * (fdf->h + 1))))
 		return (0);
 	i = 0;
@@ -128,14 +133,15 @@ int			read_file(t_fdf *fdf)
 	int		i;
 	char 	**map;
 
+	printf("BP1.2\n");
 	if (!calc_size(fdf))
 		return(0);
+	printf("BP1.3\n");
 	fd = open(fdf->fname, O_RDONLY);
 	i = 0;
 	if (!(map = processmap(fd)))
 	{
 		free_z(fdf, fdf->h);
-		free(fdf->z_matrix);
 		return (0);
 	}
 //	fdf->h = calc_high(fdf, map);
@@ -218,8 +224,10 @@ int			main(int ac, char **av)
 	if (fd < 0)
         return (ft_err());
 	close(fd);//i closed it??
+	printf("BP1\n");
 	if (!read_file(fdf))//(data, fname);x
 	    exit(0);
+	ft_printf("BP2\n");
 	data_init(fdf);
 	printf("FDFcolor=%d w=%d h=%d\n", fdf->color,fdf->w,fdf->h);
 	draw_line(fdf);
