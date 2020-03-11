@@ -51,8 +51,6 @@ int         get_width(t_fdf *fdf)
 		return (0);
 	w = ft_count_w(line, ' ');//ft_strsplit(line, ' ');//ft_wdcounter(line, ' ');
     printf("BP1.1.1.2gw\n");
-//    if (ret > 0)
-//    	free(line);
 	close(fd);
 	fdf->w = w;
 	return (w);
@@ -68,7 +66,6 @@ void		fill_matrix(int *z_line, char *line)//t_fdf *data, char *line)
 	while (nums[i])
 	{
 		z_line[i] = ft_atoi(nums[i]);
-	//	printf("zline[i]=%4d | i=%d line=%s\n", z_line[i], i, line);
 		free(nums[i]);
 		++i;
 	}
@@ -149,27 +146,13 @@ int			read_file(t_fdf *fdf)
 		free_z(fdf, fdf->h);
 		return (0);
 	}
-//	fdf->h = calc_high(fdf, map);
-//	fdf->w = ft_count_w(map[0], ' ');//''char
-//	if (fdf->w < 0 || fdf->h < 0)//point??????
-//		return(0);
-//	fdf->z_matrix = (int **)malloc(sizeof(int*) * (fdf->h + 1));
 	i = 0;
-//	while (i <= fdf->h)
-//		fdf->z_matrix[i++] = (int *)malloc(sizeof(int) * (fdf->w + 1));
-	while (map[i])//(get_next_line(fd, &line) > 0)
+	while (map[i])
 	{
-		fill_matrix(fdf->z_matrix[i], map[i]);//line);
-		//free(line);
+		fill_matrix(fdf->z_matrix[i], map[i]);
 		++i;
 	}
-/*	while (get_next_line(fd, &line) > 0)
-	{
-		fill_matrix(fdf->z_matrix[i], line);//map[i]);//line);
-		free(line);
-		++i;
-	}
-*/	close(fd);
+	close(fd);
 	fdf->z_matrix[i] = NULL;//0;
 	free_map(map);
 	return (1);
@@ -183,21 +166,9 @@ int			data_init(t_fdf *fdf)
 	fdf->color = 0;//SEG?
 	fdf->endian = 0;
 	fdf->img = NULL;
-    //fdf->img = (int *)malloc(sizeof(int) * fdf->w);
 	fdf->img_ptr = mlx_new_image(fdf->mlx_ptr, 2000, 1300);
 ///fdf->img = (int *)	mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, &fdf->w, &fdf->endian);
     fdf->img = (int *)	mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, &fdf->not_my_bus, &fdf->endian);
-	int i = 0;
-//    printf("fdfingi=%d\n", fdf->img[0]);
-/*	while (i < fdf->w * fdf->h)
-	{
-		if (i > 2600950)
-			printf("i =%d \nimg[i]]%d\n", i, fdf->img[i]);
-		if (fdf->img[i])
-			printf("IMG%d\n", fdf->img[i]);
-		++i;//2600959
-	}*/
-//	return (0);
 	fdf->rot_x = 0;
 	fdf->rot_y = 0;
 	fdf->rot_z = 0;
@@ -243,7 +214,6 @@ int			main(int ac, char **av)
 //	mlx_key_hook(fdf->win_ptr, deal_key, fdf);//NULL);
 //	mlx_mouse_hook(fdf->win_ptr, mouse_press, fdf);
 	mlx_loop(fdf->mlx_ptr);
-	//bresenham(10, 10, 600, 300, fdf);
     return (0);
 }
 

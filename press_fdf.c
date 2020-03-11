@@ -17,23 +17,21 @@ int			deal_key(int key, t_fdf *fdf)
 	int	r;
 
 //	mlx_destroy_image(fdf->mlx_ptr, fdf->img_ptr);//??
-//	ft_bzero(fdf->img, WIN_W_X);//fdf->not_my_bus);
-//	ft_bzero(fdf->img_ptr, WIN_W_X);//fdf->not_my_bus);
 	if (key != 53 && key != 123 && key != 125 && key != 124 && key != 126 && key != 12 && key != 13)
 		printf("key=%d\n", key);
 	r = 0;
 	if (key == 53)//ESC
 	{
 	    int i = 0;
-	//    free_z(fdf, fdf->h);
-	    while(i < fdf->h)//fdf->z_matrix[i])
+	/*    while(i < fdf->h)//fdf->z_matrix[i])
         {
 			free(fdf->z_matrix[i]);
 	        ++i;
         }
 	//	free(fdf->z_matrix[0]);
-	    free(fdf->z_matrix);
-		mlx_destroy_window(fdf->mlx_ptr, fdf->win_ptr);//close(0);//?????
+	*///    free(fdf->z_matrix);
+	//	free_z(fdf, fdf->h);
+	    mlx_destroy_window(fdf->mlx_ptr, fdf->win_ptr);//close(0);//?????
 		sleep(20);
 		exit(0);//return (0);
 	}
@@ -59,10 +57,8 @@ int			deal_key(int key, t_fdf *fdf)
 		fdf->z_sh = 20;
 	if (key == UP_Z)//7
 		fdf->angle_z += 0.1;
-	//fdf->rot_z += 10;
 	if (key == DOWN_Z)//9
 		fdf->angle_z -= 0.1;
-//	fdf->rot_z -= 10;
 	if (key == UP_X)
 		fdf->angle_x += 0.1;
 	if (key == DOWN_X)
@@ -72,16 +68,9 @@ int			deal_key(int key, t_fdf *fdf)
 	if (key == DOWN_Y)
 		fdf->angle_y -= 0.1;
 	if (key == 12)//q w12 13)
-		fdf->zoom += 1;//-10;
+		fdf->zoom += 1;
 	if (key == 13)
 		fdf->zoom -= 1;
-//	else
-//	{
-//		printf("NOKEY|");
-	//	mlx_loop(fdf->mlx_ptr);
-	//	mlx_mouse_hook(fdf->win_ptr, deal_mouse, fdf);
-//	}
-//	mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);//putimage?
 	draw_line(fdf);
 	return (1);
 }
