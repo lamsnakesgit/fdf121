@@ -115,6 +115,8 @@ typedef struct	s_fdf
     int er2;
     int sy;
     int sx;
+    int  z;
+    int z2;
 }				t_fdf;
 
 void	draw_line(t_fdf *fdf);

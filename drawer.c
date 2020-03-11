@@ -20,12 +20,7 @@ float		mod(float a)
 void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 {
 	int i;
-//	float z;
-//	float z1;
-	int z;
-	int z1;
 //	printf(" ZSH=%d\n", fdf->z_sh);
-	////=================OLD
 	crd.y2 = y1;
 	crd.x2 = x1;
 	ft_modify(fdf, &crd);
