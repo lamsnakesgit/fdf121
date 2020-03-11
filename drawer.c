@@ -34,23 +34,19 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 	int z1;
 //	printf(" ZSH=%d\n", fdf->z_sh);
 	////=================OLD
+	crd.y2 = y1;
+	crd.x2 = x1;
 	z = fdf->z_matrix[(int)crd.y][(int)crd.x] * fdf->z_sh;
 	z1 = fdf->z_matrix[(int)y1][(int)x1] * fdf->z_sh;
-//	====ZOOM!!!!!!!!!=========
     crd.x *= (int)(fdf->zoom);
     crd.y *= (int)(fdf->zoom);
     x1 *= fdf->zoom;
     y1 *= fdf->zoom;
-    //=====ZSH
-//    z += fdf->z_sh;
-    ////===Z_SH
 //	z *= fdf->zoom; z1 *= fdf->zoom;//
-    //=========color==============
 	fdf->color = (z || z1) > 0 ? RED : WHITE;
 //	z += fdf->z_sh;
 //	z1 += fdf->z_sh;
 //	fdf->color = (z || z1) > 5 && (z || z1) < 9 ? YELLOW : RED;
-    //==========3D==========ISO
 	x_rotate(fdf, &crd.y, &z);
 	x_rotate(fdf, &y1, &z1);
 	y_rotate(fdf, &crd.x, &z);
@@ -59,27 +55,19 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 	z_rotate(fdf, &x1, &y1);
     if (fdf->projection == ISO)
     {
-//		z += fdf->z_sh;//SHIFT Z ZOOM
-//		z1 += fdf->z_sh;
         isometric(&crd.x, &crd.y, z, fdf);
         isometric(&x1, &y1, z1, fdf);
     }
-    //			SHIFT==========
     crd.x += fdf->shift_x; //150;
     crd.y += fdf->shift_y;//150;
     x1 += fdf->shift_x;//150;//05;
     y1 += fdf->shift_y;//150;
-    ///=======================NEW
-//	er = 0;
 	dy = mod(y1 - crd.y);
 	dx = mod(x1 - crd.x);
 	sy = crd.y < y1 ? 1 : -1;
 	sx = crd.x < x1 ? 1 : -1;
 	er = dx - dy;//!!
 //	er2 = dy + 1;
-//	nx = crd.x;
-//	ny = crd.y;
-	//fdf->color = RED;//WHITE;//
 	i = 0;
 	while (crd.x != x1 || crd.y != y1)
     {
@@ -97,16 +85,13 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 		        fdf->color = YELLOW;//+=1;//0;
 		     //   printf("WEFQWRFARGAERGAFGADFGAF\n\n\n\n\n\n\n\n\n\n\n\n\n");
             }*/
-            if (crd.x < WIN_W_X && crd.y < WIN_W_X)
+            if (crd.x < WIN_W_X && crd.y < WIN_W_X && crd.x >= 0 && crd.y >= 0)
             {
                 i = WIN_W_X * 4 * crd.y + crd.x;
                 //    printf("i=%d w=%d h=%d y=%d x=%d y2=%d x2=%d WIN=%d\n", i,fdf->w,fdf->h,crd.y,crd.x,y1,x1
                 //    , WIN_W_X);
                 fdf->img[i] = fdf->color;
             }
-            if (WIN_W_X * 4 * crd.y + crd.x > 2147483647)//< 0)
-                fdf->color = 0;            //if (i % 2)
-           //     fdf->img[i] = REVWHITE;//WHITE;
         }
      //   printf("i=%d w=%d h=%d y=%d x=%d y2=%d x2=%d\n", i,fdf->w,fdf->h,crd.y,crd.x,y1,x1);
 	 //   printf("AFTER");
@@ -120,33 +105,9 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
             er += dx;
             crd.y += sy;
         }
-//	    er = er + er2;
-//	    if (er >= dx + 1)
-//        {
-//	        ny += sy;
-//	        er = er - (dx + 1);
-//        }
-//	    nx += sx;
     }
 }
-//
-//    setPixel(x2, y2);
-//    while(x1 != x2 || y1 != y2)
-//    {
-//        setPixel(x1, y1);
-//        const int error2 = error * 2;
-//        //
-//        if(error2 > -deltaY)
-//        {
-//            error -= deltaY;
-//            x1 += signX;
-//        }
-//        if(error2 < deltaX)
-//        {
-//            error += deltaX;
-//            y1 += signY;
-//        }
-//    }
+
 void        go_blank(t_fdf *fdf)
 {
     int q;
@@ -165,6 +126,7 @@ void		draw_line(t_fdf *fdf)
 	int y;
 
 	crd.y = 0;
+	go_blank(fdf);
 //	printf("fdf-h=%d fdf->w=%d \n", fdf->h, fdf->w);
     printf("ZEZOOM=%d\n", fdf->zoom);
     while (crd.y < fdf->h )//-2 )
