@@ -45,11 +45,14 @@ int         get_width(t_fdf *fdf)
 		return(0);//ft_err());
     ret = get_next_line(fd, &line);
     printf("BP1.1.1.1gw\nret=%d\nline=%%s", ret);//line);
+    if (ret > 0)
+        free(line);
     if (ret < 0)//1 ???line?
 		return (0);
 	w = ft_count_w(line, ' ');//ft_strsplit(line, ' ');//ft_wdcounter(line, ' ');
     printf("BP1.1.1.2gw\n");
-	free(line);
+//    if (ret > 0)
+//    	free(line);
 	close(fd);
 	fdf->w = w;
 	return (w);
@@ -113,12 +116,14 @@ int 		calc_size(t_fdf *fdf)
 	if (!get_width(fdf))
 		return (0);
     printf("BP1.1.3\n");
-	if (!(fdf->z_matrix = (int **)malloc(sizeof(int*) * (fdf->h + 1))))
+    fdf->z_matrix = (int **)malloc(sizeof(int*) * (fdf->h));// + 1));
+//    if (!(fdf->z_matrix = (int **)malloc(sizeof(int*) * (fdf->h + 1))))
+	if (!fdf->z_matrix)
 		return (0);
 	i = 0;
-	while (i <= fdf->h)
+	while (i < fdf->h)
 	{
-		fdf->z_matrix[i] = (int *)malloc(sizeof(int) * (fdf->w + 1));
+		fdf->z_matrix[i] = (int *)malloc(sizeof(int) * (fdf->w));
 		if (!fdf->z_matrix[i])
 			free_z(fdf, i);
 		++i;
@@ -166,6 +171,7 @@ int			read_file(t_fdf *fdf)
 	}
 */	close(fd);
 	fdf->z_matrix[i] = NULL;//0;
+	free_map(map);
 	return (1);
 }
 
@@ -228,6 +234,7 @@ int			main(int ac, char **av)
 	if (!read_file(fdf))//(data, fname);x
 	    exit(0);
 	ft_printf("BP2\n");
+	//free_map();
 	data_init(fdf);
 	printf("FDFcolor=%d w=%d h=%d\n", fdf->color,fdf->w,fdf->h);
 	draw_line(fdf);

@@ -152,6 +152,9 @@ void	x_rotate(t_fdf *fdf, int *y, int *z);
 void	y_rotate(t_fdf *fdf, int *x, int *z);
 void	z_rotate(t_fdf *fdf, int *x, int *y);
 
+int				free_map(char **line);
+void 		free_z(t_fdf *fdf, int i);
+
 
 
 

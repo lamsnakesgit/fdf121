@@ -6,7 +6,7 @@
 /*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 19:24:51 by ddratini          #+#    #+#             */
-/*   Updated: 2020/03/05 19:24:56 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/11 20:14:19 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,17 @@ int			deal_key(int key, t_fdf *fdf)
 	r = 0;
 	if (key == 53)//ESC
 	{
+	    int i = 0;
+	//    free_z(fdf, fdf->h);
+	    while(i < fdf->h)//fdf->z_matrix[i])
+        {
+			free(fdf->z_matrix[i]);
+	        ++i;
+        }
+	//	free(fdf->z_matrix[0]);
+	    free(fdf->z_matrix);
 		mlx_destroy_window(fdf->mlx_ptr, fdf->win_ptr);//close(0);//?????
-	//	sleep(20);
+		sleep(20);
 		exit(0);//return (0);
 	}
 	if (key == 126)
