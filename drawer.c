@@ -24,7 +24,7 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 	i = 0;
 	crd.y2 = y1;
 	crd.x2 = x1;
-	ft_modify(fdf, crd);
+	ft_modify(fdf, &crd);
 	WIN_W_X > fdf->not_my_bus ? printf("WINWX=%d\n") : printf("nnbsz=%d\nW=%d", fdf->not_my_bus, WIN_W_X);
 	while (crd.x != x1 || crd.y != y1)
     {

@@ -28,7 +28,7 @@ int			ft_blank(void *img, int szline)
 	return (0);
 }
 
-void        ft_color(t_fdf *fdf)
+void        ft_color(t_fdf *fdf, t_coord *crd)
 {
 //	float z;
 //	float z1;
@@ -36,39 +36,38 @@ void        ft_color(t_fdf *fdf)
     int z1;
 
     ////=================OLD
-    z = fdf->z_matrix[(int)crd.y][(int)crd.x] * fdf->z_sh;
-    z1 = fdf->z_matrix[(int)y1][(int)x1] * fdf->z_sh;
-
+    crd->z = fdf->z_matrix[(int)crd->y][(int)crd->x] * fdf->z_sh;
+    crd->z2 = fdf->z_matrix[(int)crd->y2][(int)crd->x2] * fdf->z_sh;
+    fdf->color = (crd->z || crd->z2) > 0 ? RED : WHITE;
+//	fdf->color = (z || z1) > 5 && (z || z1) < 9 ? YELLOW : RED;
 }
 
-void        ft_modify(t_fdf *fdf, t_coord crd)
+void        ft_modify(t_fdf *fdf, t_coord *crd)
 {
-    crd.x *= (int)(fdf->zoom);
-    crd.y *= (int)(fdf->zoom);
-    x1 *= fdf->zoom;
-    y1 *= fdf->zoom;
-    fdf->color = (z || z1) > 0 ? RED : WHITE;
-//	fdf->color = (z || z1) > 5 && (z || z1) < 9 ? YELLOW : RED;
-    x_rotate(fdf, &crd.y, &z);
-    x_rotate(fdf, &y1, &z1);
-    y_rotate(fdf, &crd.x, &z);
-    y_rotate(fdf, &x1, &z1);
-    z_rotate(fdf, &crd.x, &crd.y);
-    z_rotate(fdf, &x1, &y1);
+    ft_color(fdf, crd);
+    crd->x *= (int)(fdf->zoom);
+    crd->y *= (int)(fdf->zoom);
+    crd->x2 *= fdf->zoom;
+    crd->y2 *= fdf->zoom;
+    x_rotate(fdf, &crd->y, &crd->z);
+    x_rotate(fdf, &crd->y2, &crd->z2);
+    y_rotate(fdf, &crd->x, &crd->z);
+    y_rotate(fdf, &crd->x2, &crd->z2);
+    z_rotate(fdf, &crd->x, &crd->y);
+    z_rotate(fdf, &crd->x2, &crd->y2);
     if (fdf->projection == ISO)
     {
-        isometric(&crd.x, &crd.y, z, fdf);
-        isometric(&x1, &y1, z1, fdf);
+        isometric(&crd->x, &crd->y, crd->z, fdf);
+        isometric(&crd->x2, &crd->y2, crd->z2, fdf);
     }
-    crd.x += fdf->shift_x;
-    crd.y += fdf->shift_y;
-    x1 += fdf->shift_x;
-    y1 += fdf->shift_y;
-    ///=======================NEW
-    fdf->dy = mod(y1 - crd.y);
-    fdf->dx = mod(x1 - crd.x);
-    fdf->signy = crd.y < y1 ? 1 : -1;
-    fdf->signx = crd.x < x1 ? 1 : -1;
+    crd->x += fdf->shift_x;
+    crd->y += fdf->shift_y;
+    crd->x2 += fdf->shift_x;
+    crd->y2 += fdf->shift_y;
+    fdf->dy = mod(crd->y2 - crd->y);
+    fdf->dx = mod(crd->x2 - crd->x);
+    fdf->signy = crd->y < crd->y2 ? 1 : -1;
+    fdf->signx = crd->x < crd->x2 ? 1 : -1;
     fdf->er = fdf->dx - fdf->dy;//!!
 //	x_rotate(fdf, &x, &y, );
 }
