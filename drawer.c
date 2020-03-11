@@ -27,6 +27,7 @@ void		findpb(t_coord crd, int x1, int y1, t_fdf *fdf)
 //	float		z;//float
 //	float		z1;
 
+    printf("ZOOM!!!=%d\n", fdf->zoom);
 	z = fdf->z_matrix[(int)crd.y][(int)crd.x] * fdf->zoom / fdf->z_sh;//fdf->zmv;//2;
 	z1 = fdf->z_matrix[(int)y1][(int)x1] * fdf->zoom / fdf->z_sh;//2;
 //	====ZOOM!!!!!!!!!=========
@@ -158,10 +159,23 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 	    {
         //    i = fdf->w * crd.y + crd.x;
 		//    i = fdf->not_my_bus * crd.y + crd.x;
-		    i = WIN_W_X * 4 *  crd.y + crd.x;
-     //       printf("i=%d w=%d h=%d y=%d x=%d y2=%d x2=%d\n", i,fdf->w,fdf->h,crd.y,crd.x,y1,x1);
-            fdf->img[i] = fdf->color;
-            //if (i % 2)
+        //    if (WIN_W_X * 4 * crd.y + crd.x > 2147483647)//< 0)
+        //    if (WIN_W_X * 4  < 0 || WIN_W_X * 4 > 2147483647)//< 0)
+    //        if (crd.x > fdf->w * 4/*+ 1*/|| crd.x > 2147483647)//< 0)
+        /*    if (crd.x > WIN_W_X - 1 || crd.y > WIN_W_X)
+            {
+		        fdf->color = YELLOW;//+=1;//0;
+		     //   printf("WEFQWRFARGAERGAFGADFGAF\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            }*/
+            if (crd.x < WIN_W_X && crd.y < WIN_W_X)
+            {
+                i = WIN_W_X * 4 * crd.y + crd.x;
+                //    printf("i=%d w=%d h=%d y=%d x=%d y2=%d x2=%d WIN=%d\n", i,fdf->w,fdf->h,crd.y,crd.x,y1,x1
+                //    , WIN_W_X);
+                fdf->img[i] = fdf->color;
+            }
+            if (WIN_W_X * 4 * crd.y + crd.x > 2147483647)//< 0)
+                fdf->color = 0;            //if (i % 2)
            //     fdf->img[i] = REVWHITE;//WHITE;
         }
      //   printf("i=%d w=%d h=%d y=%d x=%d y2=%d x2=%d\n", i,fdf->w,fdf->h,crd.y,crd.x,y1,x1);
