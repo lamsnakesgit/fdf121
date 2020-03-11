@@ -32,44 +32,46 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 //	float z1;
 	int z;
 	int z1;
+//	t_coord crd;
 //	printf(" ZSH=%d\n", fdf->z_sh);
 	////=================OLD
+//	crd = c;
 	crd.y2 = y1;
 	crd.x2 = x1;
 	z = fdf->z_matrix[(int)crd.y][(int)crd.x] * fdf->z_sh;
-	z1 = fdf->z_matrix[(int)y1][(int)x1] * fdf->z_sh;
+	z1 = fdf->z_matrix[(int)crd.y2][(int)crd.x2] * fdf->z_sh;
     crd.x *= (int)(fdf->zoom);
     crd.y *= (int)(fdf->zoom);
-    x1 *= fdf->zoom;
-    y1 *= fdf->zoom;
+    crd.x2 *= fdf->zoom;
+    crd.y2 *= fdf->zoom;
 //	z *= fdf->zoom; z1 *= fdf->zoom;//
 	fdf->color = (z || z1) > 0 ? RED : WHITE;
 //	z += fdf->z_sh;
 //	z1 += fdf->z_sh;
 //	fdf->color = (z || z1) > 5 && (z || z1) < 9 ? YELLOW : RED;
 	x_rotate(fdf, &crd.y, &z);
-	x_rotate(fdf, &y1, &z1);
+	x_rotate(fdf, &crd.y2, &z1);
 	y_rotate(fdf, &crd.x, &z);
-	y_rotate(fdf, &x1, &z1);//z;
+	y_rotate(fdf, &crd.x2, &z1);//z;
 	z_rotate(fdf, &crd.x, &crd.y);
-	z_rotate(fdf, &x1, &y1);
+	z_rotate(fdf, &crd.x2, &crd.y2);
     if (fdf->projection == ISO)
     {
         isometric(&crd.x, &crd.y, z, fdf);
-        isometric(&x1, &y1, z1, fdf);
+        isometric(&crd.x2, &crd.y2, z1, fdf);
     }
     crd.x += fdf->shift_x; //150;
     crd.y += fdf->shift_y;//150;
-    x1 += fdf->shift_x;//150;//05;
-    y1 += fdf->shift_y;//150;
-	dy = mod(y1 - crd.y);
-	dx = mod(x1 - crd.x);
-	sy = crd.y < y1 ? 1 : -1;
-	sx = crd.x < x1 ? 1 : -1;
+    crd.x2 += fdf->shift_x;//150;//05;
+    crd.y2 += fdf->shift_y;//150;
+	dy = mod(crd.y2 - crd.y);
+	dx = mod(crd.x2 - crd.x);
+	sy = crd.y < crd.y2 ? 1 : -1;
+	sx = crd.x < crd.x2 ? 1 : -1;
 	er = dx - dy;//!!
 //	er2 = dy + 1;
 	i = 0;
-	while (crd.x != x1 || crd.y != y1)
+	while (crd.x != crd.x2 || crd.y != crd.y2)
     {
 	    er2 = er * 2;
 	//    if (crd.y >= 0 && crd.y < fdf->h && crd.x >= 0 && crd.x <= fdf->w)
