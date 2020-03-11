@@ -19,14 +19,7 @@ float		mod(float a)
 
 void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 {
-	int dy;
-	int dx;
-	int er;
-	int er2;
-	int sy;
-	int sx;
-	int nx;
-	int ny;
+
 	int i;
 //	float z;
 //	float z1;
@@ -64,16 +57,16 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
     crd.y += fdf->shift_y;//150;
     crd.x2 += fdf->shift_x;//150;//05;
     crd.y2 += fdf->shift_y;//150;
-	dy = mod(crd.y2 - crd.y);
-	dx = mod(crd.x2 - crd.x);
-	sy = crd.y < crd.y2 ? 1 : -1;
-	sx = crd.x < crd.x2 ? 1 : -1;
-	er = dx - dy;//!!
+	fdf->dy = mod(crd.y2 - crd.y);
+	fdf->dx = mod(crd.x2 - crd.x);
+	fdf->sy = crd.y < crd.y2 ? 1 : -1;
+	fdf->sx = crd.x < crd.x2 ? 1 : -1;
+	fdf->er = fdf->dx - fdf->dy;//!!
 //	er2 = dy + 1;
 	i = 0;
 	while (crd.x != crd.x2 || crd.y != crd.y2)
     {
-	    er2 = er * 2;
+	    fdf->er2 = fdf->er * 2;
 	//    if (crd.y >= 0 && crd.y < fdf->h && crd.x >= 0 && crd.x <= fdf->w)
 	    if (crd.y >= 0 && crd.y < fdf->not_my_bus && crd.x >= 0 && crd.x <= fdf->not_my_bus)//WIN_W_X)
 	    {
@@ -97,15 +90,15 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
         }
      //   printf("i=%d w=%d h=%d y=%d x=%d y2=%d x2=%d\n", i,fdf->w,fdf->h,crd.y,crd.x,y1,x1);
 	 //   printf("AFTER");
-	    if (er2 > -dy)
+	    if (fdf->er2 > -fdf->dy)
 	    {
-	        er -= dy;
-            crd.x += sx;
+	        fdf->er -= fdf->dy;
+            crd.x += fdf->sx;
         }
-	    if (er2 < dx)
+	    if (fdf->er2 < fdf->dx)
 	    {
-            er += dx;
-            crd.y += sy;
+            fdf->er += fdf->dx;
+            crd.y += fdf->sy;
         }
     }
 }
