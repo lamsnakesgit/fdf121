@@ -36,7 +36,6 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 	//    if (crd.y >= 0 && crd.y < fdf->h && crd.x >= 0 && crd.x <= fdf->w)
 	    if (crd.y >= 0 && crd.y < fdf->not_my_bus && crd.x >= 0 && crd.x <= fdf->not_my_bus)//WIN_W_X)
 	    {
-		//    i = fdf->not_my_bus * crd.y + crd.x;
         /*    if (crd.x > WIN_W_X - 1 || crd.y > WIN_W_X)
             {
 		        fdf->color = YELLOW;//+=1;//0;
@@ -45,13 +44,9 @@ void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
             if (crd.x < WIN_W_X && crd.y < WIN_W_X && crd.x >= 0 && crd.y >= 0)
             {
                 i = WIN_W_X * 4 * crd.y + crd.x;
-                //    printf("i=%d w=%d h=%d y=%d x=%d y2=%d x2=%d WIN=%d\n", i,fdf->w,fdf->h,crd.y,crd.x,y1,x1
-                //    , WIN_W_X);
                 fdf->img[i] = fdf->color;
             }
         }
-     //   printf("i=%d w=%d h=%d y=%d x=%d y2=%d x2=%d\n", i,fdf->w,fdf->h,crd.y,crd.x,y1,x1);
-	 //   printf("AFTER");
 	    if (fdf->er2 > -fdf->dy)
 	    {
 	        fdf->er -= fdf->dy;
@@ -84,17 +79,14 @@ void		draw_line(t_fdf *fdf)
 
 	crd.y = 0;
 	go_blank(fdf);
-//	printf("fdf-h=%d fdf->w=%d \n", fdf->h, fdf->w);
     printf("ZEZOOM=%d\n", fdf->zoom);
     while (crd.y < fdf->h )//-2 )
 	{
 		crd.x = 0;
-		//	printf("ASDF=y=%f x=%f y+1 x + 1\n", crd.y, crd.x);
 		while (crd.x < fdf->w )//-2 )
 		{
 			if (crd.x < fdf->w - 1)
 				brs(crd, crd.x + 1, crd.y, fdf);
-			//		printf("WER=%f crdy=%f\n", crd.x, crd.y);
 			if (crd.y < fdf->h - 1)
 				brs(crd, crd.x, crd.y + 1, fdf);
 			++crd.x;

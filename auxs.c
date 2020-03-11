@@ -27,6 +27,15 @@ int			ft_blank(void *img, int szline)
 	}
 	return (0);
 }
+void        ft_colorI(t_fdf *fdf, t_coord *crd)
+{
+    crd->z = fdf->z_matrix[(int)crd->y][(int)crd->x] * fdf->z_sh;
+    crd->z2 = fdf->z_matrix[(int)crd->y2][(int)crd->x2] * fdf->z_sh;
+    fdf->color = (crd->z || crd->z2) > 0 ? RED : WHITE;
+//	z += fdf->z_sh;
+//	z1 += fdf->z_sh;
+//	fdf->color = (z || z1) > 5 && (z || z1) < 9 ? YELLOW : RED;
+}
 
 void        ft_modify(t_fdf *fdf, t_coord *crd)
 {
@@ -36,16 +45,11 @@ void        ft_modify(t_fdf *fdf, t_coord *crd)
     int z;
     int z1;
 //	printf(" ZSH=%d\n", fdf->z_sh);
-    z = fdf->z_matrix[(int)crd->y][(int)crd->x] * fdf->z_sh;
-    z1 = fdf->z_matrix[(int)crd->y2][(int)crd->x2] * fdf->z_sh;
+    ft_colorI(fdf, crd);
     crd->x *= (int)(fdf->zoom);
     crd->y *= (int)(fdf->zoom);
     crd->x2 *= fdf->zoom;
     crd->y2 *= fdf->zoom;
-    fdf->color = (z || z1) > 0 ? RED : WHITE;
-//	z += fdf->z_sh;
-//	z1 += fdf->z_sh;
-//	fdf->color = (z || z1) > 5 && (z || z1) < 9 ? YELLOW : RED;
     x_rotate(fdf, &crd->y, &z);
     x_rotate(fdf, &crd->y2, &z1);
     y_rotate(fdf, &crd->x, &z);
