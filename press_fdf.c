@@ -11,12 +11,28 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-void        change_view(t_fdf *fdf, int key)
+
+void        change_projection(t_fdf *fdf, int key)
 {
     if (key == PRL)//6)//z
+    {
         fdf->projection = PRL;//1;
+        fdf->angle_x = 0;
+        fdf->angle_z = 0;
+        fdf->angle_y = 0;
+    }
     if (key == ISO)//7)//x
+    {
+        fdf->angle_x = 0;
+        fdf->angle_z = 0;
+        fdf->angle_y = 0;
         fdf->projection = ISO;//3;
+    }
+}
+
+void        change_view(t_fdf *fdf, int key)
+{
+    change_projection(fdf, key);
     if (key == 126)
         fdf->shift_y -= 10;
     if (key == 125)
@@ -58,7 +74,8 @@ void        change_zoom(t_fdf *fdf, int key)
 int			deal_key(int key, t_fdf *fdf)
 {
 //	mlx_destroy_image(fdf->mlx_ptr, fdf->img_ptr);//??
-	if (key != 53 && key != 123 && key != 125 && key != 124 && key != 126 && key != 12 && key != 13)
+	if (key != 53 && key != 123 && key != 125 && key != 124
+	    && key != 126 && key != 12 && key != 13)
 		printf("key=%d\n", key);
 	if (key == 53)//ESC
 	{

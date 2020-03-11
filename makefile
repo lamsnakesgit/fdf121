@@ -1,5 +1,6 @@
 NAME = ffdf
-SRC = fdf.c ft_cw.c drawer.c press_fdf.c  ft_rotation.c ft_initd.c auxs.c
+SRC = fdf.c ft_cw.c drawer.c press_fdf.c  ft_rotation.c ft_initd.c auxs.c\
+	  data_get.c
 FLG = -Wall -Wextra -Werror
 DBG = -g -O2 #-O3# -O2 -Ofast
 F = -Ofast
