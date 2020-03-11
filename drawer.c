@@ -241,7 +241,8 @@ void		draw_line(t_fdf *fdf)
 	}
 	crd.y = 0;
 //	printf("fdf-h=%d fdf->w=%d \n", fdf->h, fdf->w);
-	while (crd.y < fdf->h )//-2 )
+    printf("ZEZOOM=%d\n", fdf->zoom);
+    while (crd.y < fdf->h )//-2 )
 	{
 		crd.x = 0;
 		//	printf("ASDF=y=%f x=%f y+1 x + 1\n", crd.y, crd.x);
@@ -261,6 +262,6 @@ void		draw_line(t_fdf *fdf)
 	}
 	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);
 	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 50, 50, WHITE, "P - parallel I - ISO\nnumpad - rotate\n");
-	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 50, 50, WHITE, "numpad - rotate\n");
-	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 50, 50, WHITE, "\nd");
+	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 61, 61, WHITE, "numpad - rotate\n");
+	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 72, 72, WHITE, "\nd");
 }
