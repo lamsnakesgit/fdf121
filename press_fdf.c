@@ -11,26 +11,18 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-
+/*
+void        shift_coordinate(t_fdf *fdf, int key)
+{
+    ;
+}*/
 int			deal_key(int key, t_fdf *fdf)
 {
-	int	r;
-
 //	mlx_destroy_image(fdf->mlx_ptr, fdf->img_ptr);//??
 	if (key != 53 && key != 123 && key != 125 && key != 124 && key != 126 && key != 12 && key != 13)
 		printf("key=%d\n", key);
-	r = 0;
-	if (key == 53)//ESC
+	if (key == ESC)
 	{
-	    int i = 0;
-	/*    while(i < fdf->h)//fdf->z_matrix[i])
-        {
-			free(fdf->z_matrix[i]);
-	        ++i;
-        }
-	//	free(fdf->z_matrix[0]);
-	*///    free(fdf->z_matrix);
-	//	free_z(fdf, fdf->h);
 	    mlx_destroy_window(fdf->mlx_ptr, fdf->win_ptr);//close(0);//?????
 		sleep(20);
 		exit(0);//return (0);
@@ -50,9 +42,7 @@ int			deal_key(int key, t_fdf *fdf)
 	if (key == 0)//8) A-0
 		fdf->z_sh += 0.5;
 	if (key == 1)// && fdf->z_sh > 0)//S-1
-	{
 		fdf->z_sh -= 0.5;
-	}
 	if (fdf->z_sh >= 20 || fdf->z_sh == -20)
 		fdf->z_sh = 20;
 	if (key == UP_Z)//7

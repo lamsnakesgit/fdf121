@@ -108,6 +108,12 @@ typedef struct	s_fdf
 	int      zmv;
 	int      ymv;
 	int         xmv;
+    int     dy;
+    int     dx;
+    int     er;
+    int     er2;
+    int     signy;
+    int     signx;
 }				t_fdf;
 
 void	draw_line(t_fdf *fdf);

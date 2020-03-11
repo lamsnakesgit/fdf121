@@ -114,7 +114,6 @@ int 		calc_size(t_fdf *fdf)
 		return (0);
     printf("BP1.1.3\n");
     fdf->z_matrix = (int **)malloc(sizeof(int*) * (fdf->h));// + 1));
-//    if (!(fdf->z_matrix = (int **)malloc(sizeof(int*) * (fdf->h + 1))))
 	if (!fdf->z_matrix)
 		return (0);
 	i = 0;
@@ -191,13 +190,14 @@ int			main(int ac, char **av)
 	t_fdf	*fdf;
 	int		i;
 	int		j;
+	int     fd;
 
-	if (ac != 2)
-		ft_err();
 	printf("av1=%s\n", av[1]);
-	fdf = (t_fdf *)malloc(sizeof(t_fdf));
+    if (ac != 2)
+        return (ft_err());
+    fdf = (t_fdf *)malloc(sizeof(t_fdf));
 	fdf->fname = av[1];
-	int fd = open(av[1], O_RDONLY);//open twice
+	fd = open(av[1], O_RDONLY);//open twice
 	if (fd < 0)
         return (ft_err());
 	close(fd);//i closed it??
@@ -212,7 +212,6 @@ int			main(int ac, char **av)
 	mlx_hook(fdf->win_ptr, 2, 0, deal_key, fdf);//3
 //	mlx_hook(fdf->win_ptr, 17, 0, deal_key, fdf);
 //	mlx_key_hook(fdf->win_ptr, deal_key, fdf);//NULL);
-//	mlx_mouse_hook(fdf->win_ptr, mouse_press, fdf);
 	mlx_loop(fdf->mlx_ptr);
     return (0);
 }
