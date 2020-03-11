@@ -89,19 +89,6 @@ int 		calc_high(t_fdf *fdf, char **map)
     return (h);
 }
 
-void 		free_z(t_fdf *fdf, int i)
-{
-    int c;
-
-    c = 0;
-    while(c < i)
-    {
-        free(fdf->z_matrix[c]);
-        ++c;
-    }
-    free(fdf->z_matrix);
-}
-
 int 		calc_size(t_fdf *fdf)
 {
     int i;

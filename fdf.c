@@ -55,9 +55,6 @@ int			data_init(t_fdf *fdf)
 ///fdf->img=(int *)mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, &fdf->w, &fdf->endian);
     fdf->img = (int *)
         mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, &fdf->not_my_bus, &fdf->endian);
-	fdf->rot_x = 0;
-	fdf->rot_y = 0;
-	fdf->rot_z = 0;
 	fdf->angle_y = 0;
 	fdf->angle_x = 0;
 	fdf->angle_z = 0;

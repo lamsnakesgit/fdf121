@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 16:10:34 by ddratini          #+#    #+#             */
-/*   Updated: 2020/03/07 21:39:30 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/11 23:44:58 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,17 @@
 
 
 /*
-** change the type of projection
-** handle keys/mouse one by one
-** color
-** gradient
-** hidden surfaces
-*/
+ ** change the type of projection
+ ** handle keys/mouse one by one
+ ** color
+ ** gradient
+ ** hidden surfaces
+ */
 
 typedef	struct	s_coord
 {
-//	float 	x;
-//	float 	y;
+	//	float 	x;
+	//	float 	y;
 	int 	x;
 	int 	y;
 	int		z;
@@ -109,14 +109,14 @@ typedef struct	s_fdf
 	int      ymv;
 	int         xmv;
 
-    int dy;
-    int dx;
-    int er;
-    int er2;
-    int sy;
-    int sx;
-    int  z;
-    int z2;
+	int dy;
+	int dx;
+	int er;
+	int er2;
+	int sy;
+	int sx;
+	int  z;
+	int z2;
 }				t_fdf;
 
 void	draw_line(t_fdf *fdf);

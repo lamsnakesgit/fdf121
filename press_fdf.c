@@ -89,14 +89,4 @@ int			deal_key(int key, t_fdf *fdf)
 	return (1);
 }
 
-int			deal_mouse(int m, t_fdf *fdf)
-{
-	printf("MOUSE=%d\n", m);
-	return (0);
-}
 
-int			mouse_press(int press, int x, int y, void *param)
-{
-	printf("MOUSE=%d x=%d y=%d\n", press, x, y);
-	return (0);
-}
