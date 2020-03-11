@@ -19,23 +19,16 @@ float		mod(float a)
 
 void 		brs(t_coord crd, int x1, int y1, t_fdf *fdf)
 {
-	int i;
-//	printf(" ZSH=%d\n", fdf->z_sh);
+	int i;//	printf(" ZSH=%d\n", fdf->z_sh);
 	crd.y2 = y1;
 	crd.x2 = x1;
 	ft_modify(fdf, &crd);
 	i = 0;
 	while (crd.x != crd.x2 || crd.y != crd.y2)
     {
-	    fdf->er2 = fdf->er * 2;
-	//    if (crd.y >= 0 && crd.y < fdf->h && crd.x >= 0 && crd.x <= fdf->w)
+	    fdf->er2 = fdf->er * 2;	//    if (crd.y >= 0 && crd.y < fdf->h && crd.x >= 0 && crd.x <= fdf->w)
 	    if (crd.y >= 0 && crd.y < fdf->not_my_bus && crd.x >= 0 && crd.x <= fdf->not_my_bus)//WIN_W_X)
 	    {
-        /*    if (crd.x > WIN_W_X - 1 || crd.y > WIN_W_X)
-            {
-		        fdf->color = YELLOW;//+=1;//0;
-		     //   printf("WEFQWRFARGAERGAFGADFGAF\n\n\n\n\n\n\n\n\n\n\n\n\n");
-            }*/
             if (crd.x < WIN_W_X && crd.y < WIN_W_X && crd.x >= 0 && crd.y >= 0)
             {
                 i = WIN_W_X * 4 * crd.y + crd.x;

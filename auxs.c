@@ -27,8 +27,14 @@ int			ft_blank(void *img, int szline)
 	}
 	return (0);
 }
+
 void        ft_color(t_fdf *fdf, t_coord *crd)
 {
+    /*    if (crd.x > WIN_W_X - 1 || crd.y > WIN_W_X)
+    {
+        fdf->color = YELLOW;//+=1;//0;
+     //   printf("WEFQWRFARGAERGAFGADFGAF\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    }*/
     crd->z = fdf->z_matrix[(int)crd->y][(int)crd->x] * fdf->z_sh;
     crd->z2 = fdf->z_matrix[(int)crd->y2][(int)crd->x2] * fdf->z_sh;
     fdf->z = fdf->z_matrix[(int)crd->y][(int)crd->x] * fdf->z_sh;
