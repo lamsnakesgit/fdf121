@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 16:11:21 by ddratini          #+#    #+#             */
-/*   Updated: 2020/03/12 20:48:42 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/12 20:57:47 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,6 @@ int			data_init(t_fdf *fdf)
 	fdf->angle_y = 0;
 	fdf->angle_x = 0;
 	fdf->angle_z = 0;
-	fdf->zmv = 1;
-	fdf->xmv = WIN_W_X / 2;
-	fdf->ymv = WIN_W_X / 2;
 	fdf->projection = PRL;
 	fdf->zoom = 10;
 	fdf->shift_x = 50;
