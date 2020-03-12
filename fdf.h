@@ -151,9 +151,9 @@ int			mouse_press(int press, int x, int y, void *param);
 //int				turninarr(t_llrc *llrc);
 //int				ft_err(void);
 
-char			**lines(char *buf);
+char			**lines(char *buf, t_fdf *);
 
-char			**processmap(int fd);
+char			**processmap(int fd, t_fdf *);
 
 int				ft_blank(void *img, int szline);
 

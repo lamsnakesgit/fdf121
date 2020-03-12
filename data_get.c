@@ -100,6 +100,7 @@ int 		calc_size(t_fdf *fdf)
     if (!get_width(fdf))
         return (0);
     printf("BP1.1.3\n");
+//    if (!calc_high(fdf, ))
     fdf->z_matrix = (int **)malloc(sizeof(int*) * (fdf->h));// + 1));
 //    if (!(fdf->z_matrix = (int **)malloc(sizeof(int*) * (fdf->h + 1))))
     if (!fdf->z_matrix)

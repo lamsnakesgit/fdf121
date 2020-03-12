@@ -80,7 +80,7 @@ int			deal_key(int key, t_fdf *fdf)
 	if (key == 53)//ESC
 	{
 	    mlx_destroy_window(fdf->mlx_ptr, fdf->win_ptr);//close(0);//?????
-//		sleep(20);
+		sleep(10);
 		exit(0);//return (0);
 	}
 	change_view(fdf, key);

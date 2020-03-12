@@ -18,18 +18,32 @@ int			read_file(t_fdf *fdf)
 	char	*line;
 	int		i;
 	char 	**map;
+	size_t  slen;
 
 	printf("BP1.2\n");
-	if (!calc_size(fdf))
-		return(0);
+//	if (!calc_size(fdf))
+//		return(0);
 	printf("BP1.3\n");
 	fd = open(fdf->fname, O_RDONLY);
+	printf("FD-readfile=%d\n", fd);
 	i = 0;
-	if (!(map = processmap(fd)))
+	if (!(map = processmap(fd, fdf)))
 	{
-		free_z(fdf, fdf->h);
+	//	free_z(fdf, fdf->h);
 		return (0);
 	}
+	fdf->z_matrix = (int **)malloc(sizeof(int *) * fdf->h);//?-1?
+	if (!fdf->z_matrix)
+        return (free_map(map));
+	fdf->w = ft_count_w(map[0], ' ');
+	//slen = ft_strlen(map[0]);
+	i = 1;
+	while (map[i])
+    {
+	    if (ft_count_w(map[i] != fdf->w))//if (ft_strlen(map[i]) != slen)
+            return (free_map(map));
+	    ++i;
+    }
 	i = 0;
 	while (map[i])
 	{
@@ -37,8 +51,9 @@ int			read_file(t_fdf *fdf)
 		++i;
 	}
 	close(fd);
-	printf("ZMATRIXI=%d\n", i);
-	//fdf->z_matrix[i] = NULL;//0;
+	printf("ZMATRIXI=%d\nfdf-h=%d\nfdf-w=%d\n", i, fdf->h, fdf->w);
+	//df->z_matrix[i] = NULL;//0;
+	printf("ZOK\n");
 	free_map(map);
 	return (1);
 }
@@ -72,25 +87,44 @@ int			data_init(t_fdf *fdf)
 	return (0);
 }
 
+int         isvalid(int ac, char **av)
+{
+    int fd;
+
+    if (ac != 2)
+        return (0);
+    fd = open(av[1], O_RDONLY);
+    printf("FDOPEN=%d\n", fd);
+//    close(fd);
+//    printf("FDCLOSE=%d\n", fd);
+    if (fd < 0)
+        return (0);
+    close(fd);
+    printf("FDCLOSE=%d\n", fd);
+    return (fd);
+}
 int			main(int ac, char **av)
 {
 	t_fdf	*fdf;
 	int		i;
 	int		j;
+	int     fd;
 
-	if (ac != 2)
-		ft_err();
+	if ((fd = isvalid(ac, av) <= 0))
+	    return (ft_err());
 	printf("av1=%s\n", av[1]);
 	fdf = (t_fdf *)malloc(sizeof(t_fdf));
-	fdf->fname = av[1];
-	int fd = open(av[1], O_RDONLY);//open twice
-	if (fd < 0)
-        return (ft_err());
-	close(fd);//i closed it??
+	fdf->fname = av[1];	//fd = open(av[1], O_RDONLY);//open twice
+//	close(fd);//i closed it??
 	printf("BP1\n");
 	if (!read_file(fdf))//(data, fname);x
+    {
+	    sleep(8);
 	    exit(0);
-	ft_printf("BP2--=2\n");
+    }
+    printf("BP2\n");
+    ft_printf("BP2--=2\n");
+    write(1, "BP2==32\n", 8);
 	//free_map();
 	data_init(fdf);
 	printf("FDFcolor=%d w=%d h=%d\n", fdf->color, fdf->w, fdf->h);

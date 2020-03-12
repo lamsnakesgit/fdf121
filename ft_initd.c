@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-char			**lines(char *buf)
+char			**lines(char *buf, t_fdf *fdf)
 {
 	int		i;
 	int		s;
@@ -26,9 +26,11 @@ char			**lines(char *buf)
 			++s;
 	if (!s)
 		return (0);
+    fdf->h = i;
+    if (fdf->h < 1)
+        return (0);
 	if (!(ls = (char **)malloc(sizeof(char *) * (s + 2))))
 		return (0);
-	i = -1;
 	return (ls);
 }
 
@@ -62,13 +64,13 @@ int				checkmap(char **ls, char *buf, int i, int j)
 				return (free_map(ls));
 			ls[++j] = &(buf[i + 1]);
 		}
-//	if (buf[i - 1] != '\n')
-//		return (free_map(ls));
+	if (buf[i - 1] != '\n')
+		return (free_map(ls));
 	ls[++j] = 0;
 	return (1);
 }
 
-char			**processmap(int fd)
+char			**processmap(int fd, t_fdf *fdf)
 {
 	char	buf[BS + 1];
 	int		ret;
@@ -84,7 +86,7 @@ char			**processmap(int fd)
 		free(cp);
 		cp = sv;
 	}
-	if (!cp || ret < 0 || !(ls = lines(cp)))
+	if (!cp || ret < 0 || !(ls = lines(cp, fdf)))
 	{
 		free(cp);
 		return (0);

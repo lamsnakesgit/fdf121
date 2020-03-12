@@ -2,7 +2,7 @@
 #include <mlx.h>
 #include <stdio.h>
 
-int main()
+int main(int ac, char **av, int a, int b, int c)
 {
 	void *p;
 //	p = mlx_init();
