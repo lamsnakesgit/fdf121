@@ -6,13 +6,13 @@
 /*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 23:24:07 by ddratini          #+#    #+#             */
-/*   Updated: 2020/03/12 20:51:36 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/12 21:09:03 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		isometric(int *x, int *y, int z, t_fdf *fdf)
+void		isometric(int *x, int *y, int z)
 {
 	float	prev_x;
 	float	prev_y;

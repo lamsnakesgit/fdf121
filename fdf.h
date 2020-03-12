@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 16:10:34 by ddratini          #+#    #+#             */
-/*   Updated: 2020/03/12 21:03:14 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/12 21:09:24 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int				ft_count_w(char *s, char c);
 int				deal_mouse(int m, t_fdf *fdf);
 int				mouse_press(int button, int x, int y, void *param);
 int				ft_err();
-void			isometric(int *x, int *y, int z, t_fdf *fdf);
+void			isometric(int *x, int *y, int z);
 void			rot_y(float *x, float *y, float *z, float angle);
 void			rot_z(float *x, float *y, float *z, float angle);
 int				deal_mouse(int m, t_fdf *fdf);

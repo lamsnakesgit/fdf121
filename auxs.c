@@ -6,7 +6,7 @@
 /*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 21:36:02 by ddratini          #+#    #+#             */
-/*   Updated: 2020/03/12 21:04:44 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/12 21:09:50 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,13 @@ void		ft_zoomrt(t_fdf *fdf, t_coord *crd)
 	z_rotate(fdf, &crd->x2, &crd->y2);
 	if (fdf->projection == ISO)
 	{
-		isometric(&crd->x, &crd->y, crd->z, fdf);
-		isometric(&crd->x2, &crd->y2, crd->z2, fdf);
+		isometric(&crd->x, &crd->y, crd->z);
+		isometric(&crd->x2, &crd->y2, crd->z2);
 	}
 }
 
 void		ft_modify(t_fdf *fdf, t_coord *crd)
 {
-	int i;
-
 	ft_color(fdf, crd);
 	ft_zoomrt(fdf, crd);
 	crd->x += fdf->shift_x;

@@ -6,7 +6,7 @@
 /*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 19:28:55 by ddratini          #+#    #+#             */
-/*   Updated: 2020/03/12 20:46:21 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/12 21:08:23 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ void		print_menu(t_fdf *fdf)
 void		draw_line(t_fdf *fdf)
 {
 	t_coord	crd;
-	int		x;
-	int		y;
 
 	crd.y = 0;
 	go_blank(fdf);
