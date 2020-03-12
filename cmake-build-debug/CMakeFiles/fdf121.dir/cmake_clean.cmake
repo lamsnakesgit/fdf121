@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/fdf121.dir/auxs.c.o"
+  "CMakeFiles/fdf121.dir/data_get.c.o"
   "CMakeFiles/fdf121.dir/drawer.c.o"
   "CMakeFiles/fdf121.dir/fdf.c.o"
+  "CMakeFiles/fdf121.dir/free.c.o"
   "CMakeFiles/fdf121.dir/ft_cw.c.o"
   "CMakeFiles/fdf121.dir/ft_initd.c.o"
   "CMakeFiles/fdf121.dir/ft_rotation.c.o"

@@ -6,6 +6,11 @@ CMakeFiles/fdf121.dir/auxs.c.o: ../auxs.c
 CMakeFiles/fdf121.dir/auxs.c.o: ../fdf.h
 CMakeFiles/fdf121.dir/auxs.c.o: ../libft/libft.h
 
+CMakeFiles/fdf121.dir/data_get.c.o: ../minilibx_macos/mlx.h
+CMakeFiles/fdf121.dir/data_get.c.o: ../data_get.c
+CMakeFiles/fdf121.dir/data_get.c.o: ../fdf.h
+CMakeFiles/fdf121.dir/data_get.c.o: ../libft/libft.h
+
 CMakeFiles/fdf121.dir/drawer.c.o: ../minilibx_macos/mlx.h
 CMakeFiles/fdf121.dir/drawer.c.o: ../drawer.c
 CMakeFiles/fdf121.dir/drawer.c.o: ../fdf.h
@@ -15,6 +20,11 @@ CMakeFiles/fdf121.dir/fdf.c.o: ../minilibx_macos/mlx.h
 CMakeFiles/fdf121.dir/fdf.c.o: ../fdf.c
 CMakeFiles/fdf121.dir/fdf.c.o: ../fdf.h
 CMakeFiles/fdf121.dir/fdf.c.o: ../libft/libft.h
+
+CMakeFiles/fdf121.dir/free.c.o: ../minilibx_macos/mlx.h
+CMakeFiles/fdf121.dir/free.c.o: ../fdf.h
+CMakeFiles/fdf121.dir/free.c.o: ../free.c
+CMakeFiles/fdf121.dir/free.c.o: ../libft/libft.h
 
 CMakeFiles/fdf121.dir/ft_cw.c.o: ../minilibx_macos/mlx.h
 CMakeFiles/fdf121.dir/ft_cw.c.o: ../fdf.h

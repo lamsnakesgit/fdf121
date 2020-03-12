@@ -5,8 +5,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/ddratini/42_03_projests/fdf121/auxs.c" "/Users/ddratini/42_03_projests/fdf121/cmake-build-debug/CMakeFiles/fdf121.dir/auxs.c.o"
+  "/Users/ddratini/42_03_projests/fdf121/data_get.c" "/Users/ddratini/42_03_projests/fdf121/cmake-build-debug/CMakeFiles/fdf121.dir/data_get.c.o"
   "/Users/ddratini/42_03_projests/fdf121/drawer.c" "/Users/ddratini/42_03_projests/fdf121/cmake-build-debug/CMakeFiles/fdf121.dir/drawer.c.o"
   "/Users/ddratini/42_03_projests/fdf121/fdf.c" "/Users/ddratini/42_03_projests/fdf121/cmake-build-debug/CMakeFiles/fdf121.dir/fdf.c.o"
+  "/Users/ddratini/42_03_projests/fdf121/free.c" "/Users/ddratini/42_03_projests/fdf121/cmake-build-debug/CMakeFiles/fdf121.dir/free.c.o"
   "/Users/ddratini/42_03_projests/fdf121/ft_cw.c" "/Users/ddratini/42_03_projests/fdf121/cmake-build-debug/CMakeFiles/fdf121.dir/ft_cw.c.o"
   "/Users/ddratini/42_03_projests/fdf121/ft_initd.c" "/Users/ddratini/42_03_projests/fdf121/cmake-build-debug/CMakeFiles/fdf121.dir/ft_initd.c.o"
   "/Users/ddratini/42_03_projests/fdf121/ft_rotation.c" "/Users/ddratini/42_03_projests/fdf121/cmake-build-debug/CMakeFiles/fdf121.dir/ft_rotation.c.o"

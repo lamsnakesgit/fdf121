@@ -89,6 +89,9 @@
 		<Unit filename="/Users/ddratini/42_03_projests/fdf121/auxs.c">
 			<Option target="fdf121"/>
 		</Unit>
+		<Unit filename="/Users/ddratini/42_03_projests/fdf121/data_get.c">
+			<Option target="fdf121"/>
+		</Unit>
 		<Unit filename="/Users/ddratini/42_03_projests/fdf121/drawer.c">
 			<Option target="fdf121"/>
 		</Unit>
@@ -96,6 +99,9 @@
 			<Option target="fdf121"/>
 		</Unit>
 		<Unit filename="/Users/ddratini/42_03_projests/fdf121/fdf.h">
+			<Option target="fdf121"/>
+		</Unit>
+		<Unit filename="/Users/ddratini/42_03_projests/fdf121/free.c">
 			<Option target="fdf121"/>
 		</Unit>
 		<Unit filename="/Users/ddratini/42_03_projests/fdf121/ft_cw.c">

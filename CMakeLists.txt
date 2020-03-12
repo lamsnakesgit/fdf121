@@ -121,7 +121,9 @@ add_executable(fdf121
         press_fdf.c
         drawer.c
         ft_initd.c
-        auxs.c)
+        auxs.c
+        data_get.c
+        free.c)
 
 target_link_libraries(fdf121
         "-lmlx"

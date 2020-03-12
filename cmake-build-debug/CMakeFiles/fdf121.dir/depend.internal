@@ -6,6 +6,11 @@ CMakeFiles/fdf121.dir/auxs.c.o
  /Users/ddratini/42_03_projests/fdf121/auxs.c
  /Users/ddratini/42_03_projests/fdf121/fdf.h
  /Users/ddratini/42_03_projests/fdf121/libft/libft.h
+CMakeFiles/fdf121.dir/data_get.c.o
+ ../minilibx_macos/mlx.h
+ /Users/ddratini/42_03_projests/fdf121/data_get.c
+ /Users/ddratini/42_03_projests/fdf121/fdf.h
+ /Users/ddratini/42_03_projests/fdf121/libft/libft.h
 CMakeFiles/fdf121.dir/drawer.c.o
  ../minilibx_macos/mlx.h
  /Users/ddratini/42_03_projests/fdf121/drawer.c
@@ -15,6 +20,11 @@ CMakeFiles/fdf121.dir/fdf.c.o
  ../minilibx_macos/mlx.h
  /Users/ddratini/42_03_projests/fdf121/fdf.c
  /Users/ddratini/42_03_projests/fdf121/fdf.h
+ /Users/ddratini/42_03_projests/fdf121/libft/libft.h
+CMakeFiles/fdf121.dir/free.c.o
+ ../minilibx_macos/mlx.h
+ /Users/ddratini/42_03_projests/fdf121/fdf.h
+ /Users/ddratini/42_03_projests/fdf121/free.c
  /Users/ddratini/42_03_projests/fdf121/libft/libft.h
 CMakeFiles/fdf121.dir/ft_cw.c.o
  ../minilibx_macos/mlx.h

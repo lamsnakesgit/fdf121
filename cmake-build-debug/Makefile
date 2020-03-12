@@ -150,6 +150,33 @@ auxs.c.s:
 	$(MAKE) -f CMakeFiles/fdf121.dir/build.make CMakeFiles/fdf121.dir/auxs.c.s
 .PHONY : auxs.c.s
 
+data_get.o: data_get.c.o
+
+.PHONY : data_get.o
+
+# target to build an object file
+data_get.c.o:
+	$(MAKE) -f CMakeFiles/fdf121.dir/build.make CMakeFiles/fdf121.dir/data_get.c.o
+.PHONY : data_get.c.o
+
+data_get.i: data_get.c.i
+
+.PHONY : data_get.i
+
+# target to preprocess a source file
+data_get.c.i:
+	$(MAKE) -f CMakeFiles/fdf121.dir/build.make CMakeFiles/fdf121.dir/data_get.c.i
+.PHONY : data_get.c.i
+
+data_get.s: data_get.c.s
+
+.PHONY : data_get.s
+
+# target to generate assembly for a file
+data_get.c.s:
+	$(MAKE) -f CMakeFiles/fdf121.dir/build.make CMakeFiles/fdf121.dir/data_get.c.s
+.PHONY : data_get.c.s
+
 drawer.o: drawer.c.o
 
 .PHONY : drawer.o
@@ -203,6 +230,33 @@ fdf.s: fdf.c.s
 fdf.c.s:
 	$(MAKE) -f CMakeFiles/fdf121.dir/build.make CMakeFiles/fdf121.dir/fdf.c.s
 .PHONY : fdf.c.s
+
+free.o: free.c.o
+
+.PHONY : free.o
+
+# target to build an object file
+free.c.o:
+	$(MAKE) -f CMakeFiles/fdf121.dir/build.make CMakeFiles/fdf121.dir/free.c.o
+.PHONY : free.c.o
+
+free.i: free.c.i
+
+.PHONY : free.i
+
+# target to preprocess a source file
+free.c.i:
+	$(MAKE) -f CMakeFiles/fdf121.dir/build.make CMakeFiles/fdf121.dir/free.c.i
+.PHONY : free.c.i
+
+free.s: free.c.s
+
+.PHONY : free.s
+
+# target to generate assembly for a file
+free.c.s:
+	$(MAKE) -f CMakeFiles/fdf121.dir/build.make CMakeFiles/fdf121.dir/free.c.s
+.PHONY : free.c.s
 
 ft_cw.o: ft_cw.c.o
 
@@ -2862,12 +2916,18 @@ help:
 	@echo "... auxs.o"
 	@echo "... auxs.i"
 	@echo "... auxs.s"
+	@echo "... data_get.o"
+	@echo "... data_get.i"
+	@echo "... data_get.s"
 	@echo "... drawer.o"
 	@echo "... drawer.i"
 	@echo "... drawer.s"
 	@echo "... fdf.o"
 	@echo "... fdf.i"
 	@echo "... fdf.s"
+	@echo "... free.o"
+	@echo "... free.i"
+	@echo "... free.s"
 	@echo "... ft_cw.o"
 	@echo "... ft_cw.i"
 	@echo "... ft_cw.s"

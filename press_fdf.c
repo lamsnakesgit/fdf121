@@ -1,3 +1,5 @@
+
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -6,7 +8,7 @@
 /*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 19:24:51 by ddratini          #+#    #+#             */
-/*   Updated: 2020/03/12 21:05:26 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/12 23:04:07 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +60,9 @@ void		change_view(t_fdf *fdf, int key)
 void		change_zoom(t_fdf *fdf, int key)
 {
 	if (key == 0)
-		fdf->z_sh += 0.2;//0.5;
+		fdf->z_sh += 0.5;
 	if (key == 1)
-		fdf->z_sh -= 0.2;//0.5;
+		fdf->z_sh -= 0.5;
 	if (fdf->z_sh >= 20)
 		fdf->z_sh = 20;
 	if (fdf->z_sh <= -20)
@@ -76,7 +78,6 @@ int			deal_key(int key, t_fdf *fdf)
 	if (key == 53)
 	{
 		mlx_destroy_window(fdf->mlx_ptr, fdf->win_ptr);
-		//sleep(10);
 		exit(0);
 	}
 	change_view(fdf, key);
