@@ -162,7 +162,7 @@ void	y_rotate(t_fdf *fdf, int *x, int *z);
 void	z_rotate(t_fdf *fdf, int *x, int *y);
 
 int				free_map(char **line);
-void 		free_z(t_fdf *fdf, int i);
+//void 		free_z(t_fdf *fdf, int i);
 
 void        ft_modify(t_fdf *fdf, t_coord *crd);
 
@@ -170,7 +170,7 @@ int			get_high(t_fdf *fdf);
 int         get_width(t_fdf *fdf);
 void		fill_matrix(int *z_line, char *line);
 int 		calc_high(t_fdf *fdf, char **map);
-void 		free_z(t_fdf *fdf, int i);
+int 		free_z(t_fdf *fdf, int i);
 int 		calc_size(t_fdf *fdf);
 
 

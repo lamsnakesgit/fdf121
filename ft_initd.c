@@ -26,7 +26,7 @@ char			**lines(char *buf, t_fdf *fdf)
 			++s;
 	if (!s)
 		return (0);
-    fdf->h = i;
+    fdf->h = s;
     if (fdf->h < 1)
         return (0);
 	if (!(ls = (char **)malloc(sizeof(char *) * (s + 2))))

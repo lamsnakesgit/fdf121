@@ -65,6 +65,7 @@ void		fill_matrix(int *z_line, char *line)//t_fdf *data, char *line)
     i = 0;
     while (nums[i])
     {
+        printf("FILLMi=%d\n%s", i, nums[i]);
         z_line[i] = ft_atoi(nums[i]);
         free(nums[i]);
         ++i;

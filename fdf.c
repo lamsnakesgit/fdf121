@@ -12,6 +12,11 @@
 
 #include "fdf.h"
 
+/*
+** read map; calc high; alloc zmatptr; cnt number in each line && cmp;
+** if even fillmatrix if not free mpa + zptr + zarr
+*/
+
 int			read_file(t_fdf *fdf)
 {
 	int		fd;
@@ -38,15 +43,19 @@ int			read_file(t_fdf *fdf)
 	fdf->w = ft_count_w(map[0], ' ');
 	//slen = ft_strlen(map[0]);
 	i = 1;
-	while (map[i])
+	while (map[i])//cmp len/cnt of params numbs
     {
-	    if (ft_count_w(map[i] != fdf->w))//if (ft_strlen(map[i]) != slen)
-            return (free_map(map));
+	    if (ft_count_w(map[i], ' ') != fdf->w)//if (ft_strlen(map[i]) != slen)
+            return (free_map(map) && free_z(fdf, 0));
 	    ++i;
     }
 	i = 0;
+	printf("NOWFILL\n");
 	while (map[i])
 	{
+	    fdf->z_matrix[i] = (int *)malloc(sizeof(int) * fdf->w);
+	    if (!fdf->z_matrix[i])
+	        free_z(fdf, i);
 		fill_matrix(fdf->z_matrix[i], map[i]);
 		++i;
 	}
