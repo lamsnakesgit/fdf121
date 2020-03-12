@@ -58,9 +58,9 @@ void		change_view(t_fdf *fdf, int key)
 void		change_zoom(t_fdf *fdf, int key)
 {
 	if (key == 0)
-		fdf->z_sh += 0.5;
+		fdf->z_sh += 0.2;//0.5;
 	if (key == 1)
-		fdf->z_sh -= 0.5;
+		fdf->z_sh -= 0.2;//0.5;
 	if (fdf->z_sh >= 20)
 		fdf->z_sh = 20;
 	if (fdf->z_sh <= -20)
