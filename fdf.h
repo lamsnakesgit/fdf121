@@ -90,7 +90,8 @@ typedef struct	s_fdf
 	int		shift_y;
 	float		z_sh;
 
-	int     not_my_bus;
+//    int     not_my_bus;
+     int     sl;
 	void	*mlx_ptr;
 	void	*win_ptr;
 	int		projection;
