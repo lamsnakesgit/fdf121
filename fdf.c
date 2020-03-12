@@ -6,16 +6,16 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 16:11:21 by ddratini          #+#    #+#             */
-/*   Updated: 2020/03/12 20:57:47 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/12 21:05:08 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 /*
- ** read map; calc high; alloc zmatptr; cnt number in each line && cmp;
- ** if even fillmatrix if not free mpa + zptr + zarr
- */
+** read map; calc high; alloc zmatptr; cnt number in each line && cmp;
+** if even fillmatrix if not free mpa + zptr + zarr
+*/
 
 int			check_fill(t_fdf *fdf, char **map, int fd)
 {
@@ -117,11 +117,5 @@ int			main(int ac, char **av)
 	draw_line(fdf);
 	mlx_hook(fdf->win_ptr, 2, 0, deal_key, fdf);
 	mlx_loop(fdf->mlx_ptr);
-	return (0);
-}
-
-int			ft_err(void)
-{
-	write(1, "usage: ./fdf map_file\n", 22);
 	return (0);
 }

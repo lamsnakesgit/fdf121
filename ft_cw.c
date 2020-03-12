@@ -6,7 +6,7 @@
 /*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 23:23:56 by ddratini          #+#    #+#             */
-/*   Updated: 2020/03/12 20:50:26 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/12 21:06:10 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int			ft_count_w(char *s, char c)
 	int	word;
 
 	i = 0;
-	//printf("=%s=\n", s);
 	while (s[i] && s[i] == c)
 	{
 		++i;
@@ -51,4 +50,10 @@ void		fill_matrix(int *z_line, char *line)
 		++i;
 	}
 	free(nums);
+}
+
+int			ft_err(void)
+{
+	write(1, "usage: ./fdf map_file\n", 22);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 19:24:51 by ddratini          #+#    #+#             */
-/*   Updated: 2020/03/12 20:52:54 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/12 21:05:26 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		change_projection(t_fdf *fdf, int key)
 		fdf->angle_z = 0;
 		fdf->angle_y = 0;
 	}
-	if (key == ISO)//7)//x
+	if (key == ISO)
 	{
 		fdf->angle_x = 0;
 		fdf->angle_z = 0;
@@ -41,9 +41,9 @@ void		change_view(t_fdf *fdf, int key)
 		fdf->shift_x -= 10;
 	if (key == 124)
 		fdf->shift_x += 10;
-	if (key == UP_Z)//7
+	if (key == UP_Z)
 		fdf->angle_z += 0.1;
-	if (key == DOWN_Z)//9
+	if (key == DOWN_Z)
 		fdf->angle_z -= 0.1;
 	if (key == UP_X)
 		fdf->angle_x += 0.1;
