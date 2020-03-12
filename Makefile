@@ -7,21 +7,26 @@ INC = fdf.h
 CC = gcc
 lib = libft
 
-%.c: %.o $(INC)
-
 .PHONY: all clean fclean re
+%.o : %.c $(INC) lib
+	$(CC) $(FLG) -I $(INC) -o $@ -c $<
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(INC) $(lib)
-	make -C $(lib)
-	$(CC) -o $(NAME) $(SRC) -L ./libft -lft -lmlx -framework Appkit -framework OpenGl $(FLG)
-	#$(CC)  $(FLG)  libft/libft.a minilibx_macos/libmlx.a -framework Appkit -framework opengl  $(SRC) -o $(NAME)
+lib:
+	make -C libft
 
+$(NAME): $(OBJ) $(INC) $(lib)
+	@make -C $(lib)
+	$(CC) -o $(NAME) $(SRC) -L ./libft -lft -lmlx -framework Appkit -framework OpenGl $(FLG)
+#%.o : %.c
+#	$(CC) $(FLG) -I $(INC) -o $@ -c $<
 clean:
-	rm $(OBJ)
+	@make fclean -C $(lib)
+	@rm $(OBJ)
 
 fclean: clean
-	rm $(NAME)
+	@make fclean -C $(lib)
+	@rm $(NAME)
 
 re: fclean all
