@@ -17,53 +17,49 @@
 ** if even fillmatrix if not free mpa + zptr + zarr
 */
 
+int         check_fill(t_fdf *fdf, char **map, int fd)
+{
+    int i;
+
+    fdf->w = ft_count_w(map[0], ' ');
+    i = 1;
+    while (map[i])
+    {
+        if (ft_count_w(map[i], ' ') != fdf->w)
+            return (free_map(map) && free_z(fdf, 0));
+        ++i;
+    }
+    i = 0;
+    printf("NOWFILL\n");
+    while (map[i])
+    {
+        fdf->z_matrix[i] = (int *)malloc(sizeof(int) * fdf->w);
+        if (!fdf->z_matrix[i])
+            return (free_z(fdf, i) && free_map(map));
+        fill_matrix(fdf->z_matrix[i], map[i]);
+        ++i;
+    }
+    close(fd);
+    printf("ZMATRIXI=%d\nfdf-h=%d\nfdf-w=%d\n", i, fdf->h, fdf->w);
+    free_map(map);
+    return (1);
+}
+
 int			read_file(t_fdf *fdf)
 {
 	int		fd;
-	char	*line;
-	int		i;
 	char 	**map;
-	size_t  slen;
 
 	printf("BP1.2\n");
-//	if (!calc_size(fdf))
-//		return(0);
-	printf("BP1.3\n");
 	fd = open(fdf->fname, O_RDONLY);
 	printf("FD-readfile=%d\n", fd);
-	i = 0;
 	if (!(map = processmap(fd, fdf)))
-	{
-	//	free_z(fdf, fdf->h);
 		return (0);
-	}
 	fdf->z_matrix = (int **)malloc(sizeof(int *) * fdf->h);//?-1?
 	if (!fdf->z_matrix)
         return (free_map(map));
-	fdf->w = ft_count_w(map[0], ' ');
-	//slen = ft_strlen(map[0]);
-	i = 1;
-	while (map[i])//cmp len/cnt of params numbs
-    {
-	    if (ft_count_w(map[i], ' ') != fdf->w)//if (ft_strlen(map[i]) != slen)
-            return (free_map(map) && free_z(fdf, 0));
-	    ++i;
-    }
-	i = 0;
-	printf("NOWFILL\n");
-	while (map[i])
-	{
-	    fdf->z_matrix[i] = (int *)malloc(sizeof(int) * fdf->w);
-	    if (!fdf->z_matrix[i])
-	        free_z(fdf, i);
-		fill_matrix(fdf->z_matrix[i], map[i]);
-		++i;
-	}
-	close(fd);
-	printf("ZMATRIXI=%d\nfdf-h=%d\nfdf-w=%d\n", i, fdf->h, fdf->w);
-	//df->z_matrix[i] = NULL;//0;
-	printf("ZOK\n");
-	free_map(map);
+	if (!check_fill(fdf, map, fd))
+	    return (0);
 	return (1);
 }
 
