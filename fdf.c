@@ -37,7 +37,8 @@ int			read_file(t_fdf *fdf)
 		++i;
 	}
 	close(fd);
-	fdf->z_matrix[i] = NULL;//0;
+	printf("ZMATRIXI=%d\n", i);
+	//fdf->z_matrix[i] = NULL;//0;
 	free_map(map);
 	return (1);
 }
@@ -46,19 +47,21 @@ int			data_init(t_fdf *fdf)
 {
 	fdf->mlx_ptr = mlx_init();
 	fdf->win_ptr = mlx_new_window(fdf->mlx_ptr, WIN_W_X, WIN_W_X,
-	        "BURN IN HELLУ");//"OPENWIN");
+	        "uwu");//"OPENWIN");
 	fdf->bpp = 32;
 	fdf->color = 0;//SEG?
 	fdf->endian = 0;
 	fdf->img = NULL;
+	printf("DATAINIT\n");
 	fdf->img_ptr = mlx_new_image(fdf->mlx_ptr, 2000, 1300);
 ///fdf->img=(int *)mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, &fdf->w, &fdf->endian);
     fdf->img = (int *)
-        mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, &fdf->not_my_bus, &fdf->endian);
+    mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, &fdf->not_my_bus, &fdf->endian);
 	fdf->angle_y = 0;
 	fdf->angle_x = 0;
 	fdf->angle_z = 0;
 	fdf->zmv = 1;
+	printf("NEXTINIT\n");
 	fdf->xmv = WIN_W_X / 2;
 	fdf->ymv = WIN_W_X / 2;
 	fdf->projection = PRL;// 1;
@@ -87,7 +90,7 @@ int			main(int ac, char **av)
 	printf("BP1\n");
 	if (!read_file(fdf))//(data, fname);x
 	    exit(0);
-	ft_printf("BP2\n");
+	ft_printf("BP2--=2\n");
 	//free_map();
 	data_init(fdf);
 	printf("FDFcolor=%d w=%d h=%d\n", fdf->color, fdf->w, fdf->h);

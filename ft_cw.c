@@ -30,7 +30,7 @@ int			ft_count_w(char  *s, char c)
 	{
 		if (s[i] != c)
 			++word;
-        printf("BP1.1.1.1.111cw\n");
+        printf("BP1.1.1.1.111cw-i=%4d\n", i);
         while (s[i] && s[i] != c)
 			++i;
 		while (s[i] && s[i] == c)

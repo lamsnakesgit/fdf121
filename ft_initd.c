@@ -62,8 +62,8 @@ int				checkmap(char **ls, char *buf, int i, int j)
 				return (free_map(ls));
 			ls[++j] = &(buf[i + 1]);
 		}
-	if (buf[i - 1] != '\n')
-		return (free_map(ls));
+//	if (buf[i - 1] != '\n')
+//		return (free_map(ls));
 	ls[++j] = 0;
 	return (1);
 }
