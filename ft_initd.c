@@ -6,7 +6,7 @@
 /*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 19:50:37 by ddratini          #+#    #+#             */
-/*   Updated: 2020/03/05 19:50:39 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/12 20:50:38 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ char			**lines(char *buf, t_fdf *fdf)
 			++s;
 	if (!s)
 		return (0);
-    fdf->h = s;
-    if (fdf->h < 1)
-        return (0);
+	fdf->h = s;
+	if (fdf->h < 1)
+		return (0);
 	if (!(ls = (char **)malloc(sizeof(char *) * (s + 2))))
 		return (0);
 	return (ls);

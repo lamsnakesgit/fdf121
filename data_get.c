@@ -56,23 +56,6 @@ int         get_width(t_fdf *fdf)
     return (w);
 }
 
-void		fill_matrix(int *z_line, char *line)//t_fdf *data, char *line)
-{
-    char **nums;
-    int i;
-
-    nums = ft_strsplit(line, ' ');
-    i = 0;
-    while (nums[i])
-    {
-        printf("FILLMi=%d\n%s", i, nums[i]);
-        z_line[i] = ft_atoi(nums[i]);
-        free(nums[i]);
-        ++i;
-    }
-    free(nums);
-}
-
 int 		calc_high(t_fdf *fdf, char **map)
 {
     int i;
