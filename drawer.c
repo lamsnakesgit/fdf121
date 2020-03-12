@@ -59,12 +59,19 @@ void		go_blank(t_fdf *fdf)
 
 void		print_menu(t_fdf *fdf)
 {
+    int y;
+
+    y = 15;
 	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr,
-			50, 50, WHITE, "P - parallel I - ISO\n");
+			0, 0, WHITE, "P - parallel I - ISO");
 	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr,
-			61, 61, WHITE, "numpad - rotate\n");
-	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr,
-			72, 72, WHITE, "\nd");
+			0, 20, WHITE, "numpad - rotate");
+    mlx_string_put(fdf->mlx_ptr, fdf->win_ptr,
+                   0, 40, WHITE, "altitude A-S");
+    mlx_string_put(fdf->mlx_ptr, fdf->win_ptr,
+                   0, 60, WHITE, "zoom Q W");
+    mlx_string_put(fdf->mlx_ptr, fdf->win_ptr,
+                   0, 80, WHITE, "shift - ARROWS");
 }
 
 void		draw_line(t_fdf *fdf)

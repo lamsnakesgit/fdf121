@@ -73,13 +73,10 @@ void		change_zoom(t_fdf *fdf, int key)
 
 int			deal_key(int key, t_fdf *fdf)
 {
-	if (key != 53 && key != 123 && key != 125 && key != 124
-			&& key != 126 && key != 12 && key != 13)
-		printf("key=%d\n", key);
 	if (key == 53)
 	{
 		mlx_destroy_window(fdf->mlx_ptr, fdf->win_ptr);
-		sleep(10);
+		//sleep(10);
 		exit(0);
 	}
 	change_view(fdf, key);

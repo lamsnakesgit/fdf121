@@ -30,7 +30,6 @@ int			check_fill(t_fdf *fdf, char **map, int fd)
 		++i;
 	}
 	i = 0;
-	printf("NOWFILL\n");
 	while (map[i])
 	{
 		fdf->z_matrix[i] = (int *)malloc(sizeof(int) * fdf->w);
@@ -40,7 +39,6 @@ int			check_fill(t_fdf *fdf, char **map, int fd)
 		++i;
 	}
 	close(fd);
-	printf("ZMATRIXI=%d\nfdf-h=%d\nfdf-w=%d\n", i, fdf->h, fdf->w);
 	free_map(map);
 	return (1);
 }
@@ -50,7 +48,6 @@ int			read_file(t_fdf *fdf)
 	int		fd;
 	char	**map;
 
-	printf("BP1.2\n");
 	fd = open(fdf->fname, O_RDONLY);
 	if (!(map = processmap(fd, fdf)))
 		return (0);
@@ -107,10 +104,10 @@ int			main(int ac, char **av)
 		return (ft_err());
 	fdf = (t_fdf *)malloc(sizeof(t_fdf));
 	fdf->fname = av[1];
-	printf("BP1\n");
 	if (!read_file(fdf))
 	{
-		sleep(8);
+		ft_err();
+	//	sleep(8);
 		exit(0);
 	}
 	data_init(fdf);
