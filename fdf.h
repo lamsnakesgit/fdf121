@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 16:10:34 by ddratini          #+#    #+#             */
-/*   Updated: 2020/03/12 21:09:24 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/12 21:11:42 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 # define FDF_H
 # include "libft/libft.h"
 
-//#include "minilibx_macos/mlx.h"
+/*
+** #include "minilibx_macos/mlx.h"
+*/
+
 # include <mlx.h>
 
 # include <fcntl.h>
