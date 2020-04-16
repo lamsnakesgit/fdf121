@@ -6,11 +6,10 @@
 /*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 14:05:22 by ddratini          #+#    #+#             */
-/*   Updated: 2019/11/21 13:40:40 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/03/12 22:48:21 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "get_next_line.h"
 #include "libft.h"
 
 static int			ft_strchrdup(char **copyhfd, char **line)

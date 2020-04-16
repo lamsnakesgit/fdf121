@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/student/fdf2/drawer.c
+fdf.h
+/Users/student/fdf2/fdf.h
+
+/Users/student/fdf2/fdf.h
+libft/libft.h
+/Users/student/fdf2/libft/libft.h
+mlx.h
+-
+fcntl.h
+-
+math.h
+-
+
+/Users/student/fdf2/libft/libft.h
+string.h
+-
+stdlib.h
+-
+stdio.h
+-
+unistd.h
+-
+stdarg.h
+-
+

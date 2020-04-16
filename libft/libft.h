@@ -6,7 +6,7 @@
 /*   By: gusujio <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 15:59:08 by gusujio           #+#    #+#             */
-/*   Updated: 2020/01/17 21:42:59 by gusujio          ###   ########.fr       */
+/*   Updated: 2020/03/13 16:08:00 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # define BUFF_SIZE 500
-# define MAX_FD 11000 //WHATTIME
+# define MAX_FD 11000
 # define PRC "\x1b[31m"
 # define PWC "\x1b[107m"
 # define PGC "\x1b[32m"
@@ -58,8 +58,8 @@ typedef union			u_types
 	short int			e[5];
 }						t_ailia;
 
-char				    *ft_strndup(char const *s, size_t n);
-char			    	**ft_cleanmem(char **split);
+char					*ft_strndup(char const *s, size_t n);
+char					**ft_cleanmem(char **split);
 void					*ft_memset(void *b, int c, size_t len);
 void					ft_bzero(void *s, size_t n);
 void					*ft_memcpy(void *dst, const void *src, size_t n);

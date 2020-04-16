@@ -1,4 +1,4 @@
-# Install script for directory: /Users/ddratini/42_03_projests/fdf121
+# Install script for directory: /Users/student/fdf2
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/ddratini/42_03_projests/fdf121/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/student/fdf2/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
