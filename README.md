@@ -1,1 +1,5 @@
-# fdf121
+# fdf
+This project is about creating a simplified 3D graphic representation of a
+relief landscape.
+
+Take the map and draw it
